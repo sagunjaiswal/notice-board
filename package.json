@@ -1,0 +1,14 @@
+{
+  "name": "notice-board",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/sagunjaiswal/notice-board.git",
+  "author": "pronayguha <pronay.guha@aot.edu.in>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently \"cd backEnd && yarn run dev\" \"cd frontEnd && yarn start\" "
+  },
+  "dependencies": {
+    "concurrently": "^5.3.0"
+  }
+}
