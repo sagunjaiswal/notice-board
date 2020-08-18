@@ -7,9 +7,13 @@ import Register from "./components/auth/Register";
 import Header from "./components/layout/Header";
 import UserContext from "./context/UserContext";
 
+import UploadPage from "./components/pages/UploadPage";
+import NoticeUpload from "./context/NoticeUpload";
+
 import "./style.css";
 
 export default function App() {
+  // const { userData, setUserData } = useContext(UserContext);
   const [userData, setUserData] = useState({
     token: undefined,
     user: undefined,
@@ -41,7 +45,7 @@ export default function App() {
 
     checkLoggenIn();
   }, []);
-
+  
   return (
     <>
       <BrowserRouter>
@@ -49,7 +53,7 @@ export default function App() {
           <Header />
           <div className="container">
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={userData.user ? (UploadPage) : (Home)}/>
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
             </Switch>

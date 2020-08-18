@@ -47,6 +47,7 @@ body {
 
 .page {
   padding: 1rem;
+  justify-items:center;
 }
 
 /**********HEADER*********/
@@ -150,4 +151,13 @@ body {
   height: 20px;
   border-radius: 50%;
   color: #fff;
+}
+/*****home*****/
+.uploadButton{
+  margin-left: 30%;
+  padding: 0.8rem 0.8rem;
+  font-size: 1.1rem;
+  background-color: #bce4aa;
+  border: 1px solid #6aa051;
+  border-radius: 8px;
 }
