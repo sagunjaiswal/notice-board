@@ -1,5 +1,4 @@
 import React from "react";
-import NoticeUpload from "../../context/NoticeUpload";
 import { noticeUploadHandler } from "../../helperMethod";
 export default function UploadPage() {
   const myRef = React.createRef();
