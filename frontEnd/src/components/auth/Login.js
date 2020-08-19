@@ -41,14 +41,18 @@ export default function Login() {
         <ErrorNotice message={error} clearError={() => setError(undefined)} />
       )}
       <form className="form" onSubmit={submit}>
-        <label htmlFor="login-email">Email</label>
+        <label htmlFor="login-email">
+          Email<span style={{ color: "red" }}>*</span>
+        </label>
         <input
           id="login-email"
           type="email"
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <label htmlFor="login-password">Password</label>
+        <label htmlFor="login-password">
+          Password<span style={{ color: "red" }}>*</span>
+        </label>
         <input
           id="login-password"
           type="password"

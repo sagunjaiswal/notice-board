@@ -49,28 +49,34 @@ export default function Register() {
         <ErrorNotice message={error} clearError={() => setError(undefined)} />
       )}
       <form className="form" onSubmit={submit}>
-        <label htmlFor="register-email">Email</label>
+        <label htmlFor="register-email">
+          Email<span style={{ color: "red" }}>*</span>
+        </label>
         <input
           id="register-email"
           type="email"
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <label htmlFor="register-password">Password</label>
+        <label htmlFor="register-password">
+          Password<span style={{ color: "red" }}>*</span>
+        </label>
         <input
           id="register-password"
           type="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-
+        <label htmlFor="register-password">
+          Verify Password<span style={{ color: "red" }}>*</span>
+        </label>
         <input
-          placeholder="Verify password"
+          // placeholder="Verify password"
           type="password"
           onChange={(e) => setPasswordCheck(e.target.value)}
         />
 
         <label htmlFor="register-uniqueOrganizationCode">
-          Unique Organization Code
+          Unique Organization Code<span style={{ color: "red" }}>*</span>
         </label>
         <input
           id="register-uniqueOrganizationCode"
