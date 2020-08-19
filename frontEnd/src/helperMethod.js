@@ -1,4 +1,3 @@
-import NoticeUpload from "./context/NoticeUpload";
 import axios from "axios";
 
 export const noticeUploadHandler = (e) => {
