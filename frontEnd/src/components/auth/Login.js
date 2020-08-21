@@ -22,6 +22,7 @@ export default function Login() {
         "http://localhost:5000/users/login",
         loginUser
       );
+
       setUserData({
         token: loginRes.data.token,
         user: loginRes.data.user,
@@ -31,6 +32,7 @@ export default function Login() {
     } catch (err) {
       //&& operator will only execute only if both the  sides are true
       err.response.data.msg && setError(err.response.data.msg);
+      alert("Due to some techniacl issue we couldnt log youu in");
     }
   };
 

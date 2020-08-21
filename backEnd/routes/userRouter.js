@@ -1,3 +1,4 @@
+//to set up the router point declare router here
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -6,6 +7,7 @@ const User = require("../models/userModel");
 
 router.post("/register", async (req, res) => {
   try {
+    ///the destructuring of the inputed data
     let { email, password, passwordCheck, uniqueOrganizationCode } = req.body;
 
     //validtion
@@ -26,23 +28,24 @@ router.post("/register", async (req, res) => {
           "Invalid organization code! Please enter a valid organization code.",
       });
 
+    //vaidation for no account with the same user
     const existingUser = await User.findOne({ email: email });
     if (existingUser)
       return res
         .status(400)
         .json({ msg: "An account with this email already exists!" });
 
-    //we dont want to ever store the password as a plain text in the database
+    //we dont want to ever store the password as a plain text in the database, HASHING PASSWORD
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
-    // console.log(passwordHash);
-    //if you dont want to save the unique organization code on your database then make changes here
+
+    //create a new user
     const newUser = new User({
       email,
       password: passwordHash,
       uniqueOrganizationCode,
     });
-
+    //save the new user
     const savedUser = await newUser.save();
     res.json(savedUser);
   } catch (err) {
@@ -53,6 +56,7 @@ router.post("/register", async (req, res) => {
 //code for login
 router.post("/login", async (req, res) => {
   try {
+    ///the destructuring of the inputed data
     const { email, password } = req.body;
     //validate
     if (!email || !password)
@@ -64,6 +68,7 @@ router.post("/login", async (req, res) => {
         .status(400)
         .json({ msg: "No account with this email has been registered!" });
 
+    //matching the password while logging in
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch)
       return res.status(400).json({ msg: "Invalid credentials..." });
@@ -73,7 +78,6 @@ router.post("/login", async (req, res) => {
       token,
       user: {
         id: user._id,
-        // email: user.email,
       },
     });
   } catch (err) {

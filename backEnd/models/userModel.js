@@ -7,4 +7,5 @@ const userSchema = new mongoose.Schema({
   uniqueOrganizationCode: { type: String, required: true },
 });
 
+//we export this schema  as User
 module.exports = User = mongoose.model("user", userSchema);

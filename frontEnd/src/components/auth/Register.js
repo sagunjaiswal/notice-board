@@ -3,7 +3,10 @@ import { useHistory } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import Axios from "axios";
 import ErrorNotice from "../layout/ErrorNotice";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
+toast.configure();
 export default function Register() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -11,7 +14,7 @@ export default function Register() {
   const [uniqueOrganizationCode, setUniqueOrganizationCode] = useState();
   const [error, setError] = useState();
 
-  const { setUserData } = useContext(UserContext);
+  const { userData, setUserData } = useContext(UserContext);
 
   const history = useHistory();
 
@@ -35,10 +38,24 @@ export default function Register() {
         user: loginRes.data.user,
       });
       localStorage.setItem("auth-token", loginRes.data.token);
+      const notifySuccess = () => {
+        toast.info("YEYYYY! You have registered successfully", {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 8000,
+        });
+      };
+      if (userData) notifySuccess();
       history.push("/");
     } catch (err) {
       //&& operator will only execute only if both the  sides are true
       err.response.data.msg && setError(err.response.data.msg);
+      const notifyError = () => {
+        toast.error("REGISTRATION FAILED", {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 8000,
+        });
+      };
+      if (userData) notifyError();
     }
   };
 
@@ -80,6 +97,7 @@ export default function Register() {
         </label>
         <input
           id="register-uniqueOrganizationCode"
+          autoComplete="off"
           type="text"
           onChange={(e) => setUniqueOrganizationCode(e.target.value)}
         />
