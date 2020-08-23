@@ -1,5 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import UserContext from "../../context/UserContext";
+import DisplayNotices from "./DisplayNotices";
+import UploadPage from "./UploadPage";
 
 export default function Home() {
-  return <div className="page">Home for Students...</div>;
+  const { userData } = useContext(UserContext);
+
+  return (
+    <div className="page">
+      {userData.user ? <UploadPage /> : <DisplayNotices />}Home for Students...
+    </div>
+  );
 }

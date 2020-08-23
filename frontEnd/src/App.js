@@ -4,7 +4,7 @@ import Axios from "axios";
 import Home from "./components/pages/Home";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-import Header from "./components/layout/Header";
+import Navbar from "./components/layout/Navbar";
 import UserContext from "./context/UserContext";
 
 import UploadPage from "./components/pages/UploadPage";
@@ -50,7 +50,7 @@ export default function App() {
     <>
       <BrowserRouter>
         <UserContext.Provider value={{ userData, setUserData }}>
-          <Header />
+          <Navbar />
           <div className="container">
             <Switch>
               <Route

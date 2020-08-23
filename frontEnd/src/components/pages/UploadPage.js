@@ -1,10 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { noticeUploadHandler } from "../../helperMethod";
+import SingleNotice from "./SingleNotice";
+import axios from "axios";
+
 export default function UploadPage() {
   const myRef = React.createRef();
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [noticeImage, setNoticeImage] = useState(null);
+  const [uploadedNotices, setUploadedNotices] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/notice")
+      .then((res) => {
+        setUploadedNotices(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const _onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -67,6 +82,7 @@ export default function UploadPage() {
         Upload Notice{" "}
       </button>
       <br />
+      <SingleNotice uploadedNotices={uploadedNotices} />
     </div>
   );
 }

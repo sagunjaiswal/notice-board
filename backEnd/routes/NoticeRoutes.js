@@ -57,5 +57,14 @@ router.post("/", upload.single("noticeImage"), async (req, res) => {
     res.status(400).send(err);
   }
 });
+router.get("/", async (req, res) => {
+  try {
+    const notices = await notice.find();
+    console.log(notices);
+    res.send(notices);
+  } catch (err) {
+    res.status(400).send(err);
+  }
+});
 
 module.exports = router;
