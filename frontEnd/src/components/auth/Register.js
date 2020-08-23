@@ -18,6 +18,7 @@ export default function Register() {
 
   const history = useHistory();
 
+  //sending the inputted register data to the backend
   const submit = async (e) => {
     try {
       e.preventDefault();
@@ -28,15 +29,20 @@ export default function Register() {
         passwordCheck,
         uniqueOrganizationCode,
       };
+      //posting register data
       await Axios.post("http://localhost:5000/users/register", newUser);
+
+      //to get the auth token which we get with login
       const loginRes = await Axios.post("http://localhost:5000/users/login", {
         email,
         password,
       });
+      //the response is set in the context that the registered user is logged in
       setUserData({
         token: loginRes.data.token,
         user: loginRes.data.user,
       });
+      //store the same token in our local storage
       localStorage.setItem("auth-token", loginRes.data.token);
       const notifySuccess = () => {
         toast.info("YEYYYY! You have registered successfully", {
@@ -62,6 +68,7 @@ export default function Register() {
   return (
     <div className="page">
       <h2>Register</h2>
+
       {error && (
         <ErrorNotice message={error} clearError={() => setError(undefined)} />
       )}

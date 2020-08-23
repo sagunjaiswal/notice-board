@@ -96,6 +96,7 @@ router.delete("/delete", auth, async (req, res) => {
   }
 });
 
+//for verifying the log in credentials from the frontend
 router.post("/tokenIsValid", async (req, res) => {
   try {
     const token = req.header("x-auth-token");

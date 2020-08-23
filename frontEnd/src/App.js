@@ -8,7 +8,6 @@ import Navbar from "./components/layout/Navbar";
 import UserContext from "./context/UserContext";
 
 import UploadPage from "./components/pages/UploadPage";
-// import NoticeUpload from "./context/NoticeUpload";
 
 import "./style.css";
 
@@ -19,14 +18,18 @@ export default function App() {
     user: undefined,
   });
 
-  //
+  //check  for whether the user login data is  in the localStorage or not ,
+  //even after refresh or closing and opening the tabs the details should be present in the localstorage
   useEffect(() => {
     const checkLoggenIn = async () => {
+      //if token is present in the localstorage then get the token otherwise just set the token to empty string
       let token = localStorage.getItem("auth-token");
       if (token === null) {
         localStorage.setItem("auth-token", "");
         token = "";
       }
+
+      //posting data to the backend at /isTokenValid
       const tokenRes = await Axios.post(
         "http://localhost:5000/users/tokenIsValid",
         null,
