@@ -8,7 +8,7 @@ const storage = multer.diskStorage({
     cb(null, "./uploads/");
   },
   filename: (req, file, cb) => {
-    cb(null, new Date().toISOString() + file.originalname);
+    cb(null, file.originalname);
   },
 });
 
@@ -40,6 +40,7 @@ router.get("/", async (req, res) => {
     res.status(400).send(err);
   }
 });
+// const upload = multer({ dest: "uploads/" });
 
 //Posting Notice
 router.post("/", upload.single("noticeImage"), async (req, res) => {
