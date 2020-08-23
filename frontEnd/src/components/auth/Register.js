@@ -41,7 +41,7 @@ export default function Register() {
       const notifySuccess = () => {
         toast.info("YEYYYY! You have registered successfully", {
           position: toast.POSITION.TOP_CENTER,
-          autoClose: 8000,
+          autoClose: 5000,
         });
       };
       if (userData) notifySuccess();
@@ -52,7 +52,7 @@ export default function Register() {
       const notifyError = () => {
         toast.error("REGISTRATION FAILED", {
           position: toast.POSITION.TOP_CENTER,
-          autoClose: 8000,
+          autoClose: 5000,
         });
       };
       if (userData) notifyError();

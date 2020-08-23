@@ -3,13 +3,16 @@ import { useHistory } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import Axios from "axios";
 import ErrorNotice from "../layout/ErrorNotice";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
+toast.configure();
 export default function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
 
-  const { setUserData } = useContext(UserContext);
+  const { userData, setUserData } = useContext(UserContext);
 
   const history = useHistory();
 
@@ -28,11 +31,24 @@ export default function Login() {
         user: loginRes.data.user,
       });
       localStorage.setItem("auth-token", loginRes.data.token);
+      const notifySuccess = () => {
+        toast.info("YEYYYY! You have logged in successfully", {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 5000,
+        });
+      };
+      if (userData) notifySuccess();
       history.push("/");
     } catch (err) {
       //&& operator will only execute only if both the  sides are true
       err.response.data.msg && setError(err.response.data.msg);
-      alert("Due to some techniacl issue we couldnt log youu in");
+      const notifyError = () => {
+        toast.error("LOGIN FAILED", {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 5000,
+        });
+      };
+      if (userData) notifyError();
     }
   };
 
