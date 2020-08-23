@@ -13,12 +13,13 @@ import UploadPage from "./components/pages/UploadPage";
 import "./style.css";
 
 export default function App() {
-  // const { userData, setUserData } = useContext(UserContext);
+  //saves jwt,userdata
   const [userData, setUserData] = useState({
     token: undefined,
     user: undefined,
   });
 
+  //
   useEffect(() => {
     const checkLoggenIn = async () => {
       let token = localStorage.getItem("auth-token");

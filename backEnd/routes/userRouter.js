@@ -53,7 +53,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-//code for login
+//code or route for login
 router.post("/login", async (req, res) => {
   try {
     ///the destructuring of the inputed data
@@ -63,6 +63,8 @@ router.post("/login", async (req, res) => {
       return res.status(400).json({ msg: "Not all fields have been entered" });
 
     const user = await User.findOne({ email: email });
+
+    //if the user doesnt exists
     if (!user)
       return res
         .status(400)

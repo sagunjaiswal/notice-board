@@ -6,7 +6,10 @@ function SingleNotice(props) {
       {props.uploadedNotices.length ? (
         props.uploadedNotices.map((notice) => (
           <div key={notice._id}>
-            <img src={notice.noticeImg} alt="notice image" />
+            <img
+              src={`http://localhost:5000/${notice.noticeImage}`}
+              alt="notice image"
+            />
             <h6>{notice.title}</h6>
             <p>{notice.desc}</p>
           </div>

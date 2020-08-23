@@ -8,6 +8,7 @@ const app = express();
 
 //middlewares
 app.use(express.json()); //to read json objects to request
+//activation of cors in our express app
 app.use(cors());
 app.use("/uploads", express.static("uploads"));
 
