@@ -8,7 +8,8 @@ export default function Home() {
 
   return (
     <div className="page">
-      {userData.user ? <UploadPage /> : <DisplayNotices />}Home for Students...
+      <p>Home for Students...</p>
+      {userData.user ? <UploadPage /> : <DisplayNotices />}
     </div>
   );
 }

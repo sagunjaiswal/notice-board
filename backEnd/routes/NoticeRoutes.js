@@ -13,11 +13,15 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req, file, cb) => {
-  //reject
-  if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
-    //accept
+  //accept
+  if (
+    file.mimetype === "image/jpeg" ||
+    file.mimetype === "image/png" ||
+    file.mimetype === "application/pdf"
+  ) {
     cb(null, true);
   } else {
+    //reject
     cb(new Error("Invalid File type"), false);
   }
 };
@@ -43,11 +47,10 @@ router.get("/", async (req, res) => {
 // const upload = multer({ dest: "uploads/" });
 
 //Posting Notice
-router.post("/", upload.single("noticeImage"), async (req, res) => {
+router.post("/", upload.single("noticeFile"), async (req, res) => {
   const newNotice = new notice({
-    title: req.body.title,
-    desc: req.body.desc,
-    noticeImage: req.file.path,
+    noticeFile: req.file.path,
+    noticeFileType: req.file.mimetype,
   });
   try {
     const notice = await newNotice.save();
