@@ -7,7 +7,7 @@ export default function Navbar() {
     <header id="header">
       <Link to="/">
         <span>
-          <img src="icon.png" height="40px" width="70px" />
+          <img src="./icon.png" height="40px" width="70px" alt="app-logo" />
         </span>
         <h1 className="title">NOTICE BOARD</h1>
       </Link>

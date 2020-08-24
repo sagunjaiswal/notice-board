@@ -1,15 +1,11 @@
 const mongoose = require("mongoose");
 
 const noticeSchema = new mongoose.Schema({
-  title: {
+  noticeFile: {
     type: String,
     required: true,
   },
-  desc: {
-    type: String,
-    required: true,
-  },
-  noticeImage: {
+  noticeFileType: {
     type: String,
     required: true,
   },

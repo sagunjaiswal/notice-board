@@ -4,24 +4,34 @@ import SingleNotice from "./SingleNotice";
 
 const DisplayNotices = () => {
   const [uploadedNotices, setUploadedNotices] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios
       .get("http://localhost:5000/notice")
       .then((res) => {
         setUploadedNotices(res.data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
 
-  return (
-    <div>
-      <h1>Display Notice</h1>
-      <SingleNotice uploadedNotices={uploadedNotices} />
-    </div>
-  );
+  const getContent = () => {
+    return isLoading ? (
+      <p>Loading</p>
+    ) : uploadedNotices.length ? (
+      // <p>Loaded</p>
+      uploadedNotices.map((notice) => {
+        return <SingleNotice key={notice._id} notice={notice} />;
+      })
+    ) : (
+      <p>No notice</p>
+    );
+  };
+
+  return getContent();
 };
 
 export default DisplayNotices;
