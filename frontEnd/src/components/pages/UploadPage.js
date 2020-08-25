@@ -44,53 +44,55 @@ export default function UploadPage() {
 
   return (
     <div className="page">
-      <input
-        type="text"
-        name="title"
-        id="title"
-        placeholder="Title"
-        onChange={(e) => _onChangeHandler(e)}
-        required
-      />
-      <br />
-      <input
-        type="date"
-        name="noticeDate"
-        id="noticeDate"
-        value={noticeDate}
-        max={moment().format("YYYY-MM-DD")}
-        onChange={(e) => _onChangeHandler(e)}
-      />
-      <br />
-      <button
-        className="selectFileBtn"
-        name="fileSelector"
-        onClick={() => myRef.current.click()}
-      >
-        Select Notice File
-      </button>
-      <strong>{noticeFile ? noticeFile.name : null}</strong>
-      <input
-        ref={myRef}
-        type="file"
-        accept=".pdf,.jpeg"
-        id="upload"
-        style={{ display: "none" }}
-        onChange={(e) => _onChangeHandler(e)}
-      />
-      <br />
-      <button
-        className="uploadButton"
-        name="fileSelector"
-        onClick={() => noticeUploadHandler(formDataBundler())}
-      >
-        Upload Notice{" "}
-      </button>
+      <div className="upload-form">
+        <input
+          type="text"
+          name="title"
+          id="title"
+          placeholder="Title"
+          onChange={(e) => _onChangeHandler(e)}
+          required
+        />
+        <br />
+        <input
+          type="date"
+          name="noticeDate"
+          id="noticeDate"
+          value={noticeDate}
+          max={moment().format("YYYY-MM-DD")}
+          onChange={(e) => _onChangeHandler(e)}
+        />
+        <br />
+        <button
+          className="selectFileBtn"
+          name="fileSelector"
+          onClick={() => myRef.current.click()}
+        >
+          Select Notice File
+        </button>
+        <strong>{noticeFile ? noticeFile.name : null}</strong>
+        <input
+          ref={myRef}
+          type="file"
+          accept=".pdf,.jpeg"
+          id="upload"
+          style={{ display: "none" }}
+          onChange={(e) => _onChangeHandler(e)}
+        />
+        <br />
+        <button
+          className="uploadButton"
+          name="fileSelector"
+          onClick={() => noticeUploadHandler(formDataBundler())}
+        >
+          Upload Notice
+        </button>
+      </div>
       <br />
       {uploadedNotices.length ? (
         uploadedNotices.map((notice) => noticeRenderer(notice))
       ) : (
-        <p>No notice</p>
+        <h1>Loading notices...</h1>
       )}
     </div>
   );

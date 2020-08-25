@@ -55,7 +55,8 @@ export default function App() {
       <BrowserRouter>
         <UserContext.Provider value={{ userData, setUserData }}>
           <Navbar />
-          <div className="container">
+          <div>
+            {/* className="container"> */}
             <Switch>
               <Route
                 exact
