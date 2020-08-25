@@ -8,7 +8,12 @@ export default function Home() {
 
   return (
     <div className="page">
-      <p>Home for Students...</p>
+      {userData.user ? null : (
+        <p>
+          Only faculty members can register or login for uploading the notice...
+        </p>
+      )}
+
       {userData.user ? <UploadPage /> : <DisplayNotices />}
     </div>
   );

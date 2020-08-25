@@ -67,50 +67,52 @@ export default function Register() {
 
   return (
     <div className="page">
-      <h2>Register</h2>
+      <div className="login-register-form">
+        <h2>Register</h2>
 
-      {error && (
-        <ErrorNotice message={error} clearError={() => setError(undefined)} />
-      )}
-      <form className="form" onSubmit={submit}>
-        <label htmlFor="register-email">
-          Email<span style={{ color: "red" }}>*</span>
-        </label>
-        <input
-          id="register-email"
-          type="email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        {error && (
+          <ErrorNotice message={error} clearError={() => setError(undefined)} />
+        )}
+        <form className="form" onSubmit={submit}>
+          <label htmlFor="register-email">
+            Email<span style={{ color: "red" }}>*</span>
+          </label>
+          <input
+            id="register-email"
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-        <label htmlFor="register-password">
-          Password<span style={{ color: "red" }}>*</span>
-        </label>
-        <input
-          id="register-password"
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <label htmlFor="register-password">
-          Verify Password<span style={{ color: "red" }}>*</span>
-        </label>
-        <input
-          // placeholder="Verify password"
-          type="password"
-          onChange={(e) => setPasswordCheck(e.target.value)}
-        />
+          <label htmlFor="register-password">
+            Password<span style={{ color: "red" }}>*</span>
+          </label>
+          <input
+            id="register-password"
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <label htmlFor="register-password">
+            Verify Password<span style={{ color: "red" }}>*</span>
+          </label>
+          <input
+            // placeholder="Verify password"
+            type="password"
+            onChange={(e) => setPasswordCheck(e.target.value)}
+          />
 
-        <label htmlFor="register-uniqueOrganizationCode">
-          Unique Organization Code<span style={{ color: "red" }}>*</span>
-        </label>
-        <input
-          id="register-uniqueOrganizationCode"
-          autoComplete="off"
-          type="text"
-          onChange={(e) => setUniqueOrganizationCode(e.target.value)}
-        />
+          <label htmlFor="register-uniqueOrganizationCode">
+            Unique Organization Code<span style={{ color: "red" }}>*</span>
+          </label>
+          <input
+            id="register-uniqueOrganizationCode"
+            autoComplete="off"
+            type="text"
+            onChange={(e) => setUniqueOrganizationCode(e.target.value)}
+          />
 
-        <input type="submit" value="Register" />
-      </form>
+          <input type="submit" value="Register" />
+        </form>
+      </div>
     </div>
   );
 }

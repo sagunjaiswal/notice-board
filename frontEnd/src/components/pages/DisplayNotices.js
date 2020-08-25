@@ -20,14 +20,13 @@ const DisplayNotices = () => {
 
   const getContent = () => {
     return isLoading ? (
-      <p>Loading</p>
+      <h1>Loading...</h1>
     ) : uploadedNotices.length ? (
-      // <p>Loaded</p>
       uploadedNotices.map((notice) => {
         return <SingleNotice key={notice._id} notice={notice} />;
       })
     ) : (
-      <p>No notice</p>
+      <h1>No notice</h1>
     );
   };
 
