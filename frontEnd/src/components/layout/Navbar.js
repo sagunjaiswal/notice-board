@@ -8,22 +8,12 @@ export default function Navbar() {
       <Link to="/">
         <img
           src="/icon.png"
-          height="40px"
-          width="30px"
+          className="nav-logo"
+          // height="40px"
+          // width="30px"
           alt="app-logo"
-          style={{ marginBottom: 15, marginTop: 15 }}
         />
-        <h1
-          style={{
-            display: "inline",
-            marginLeft: 0,
-            // marginTop: "11px",
-            // marginBottom: "11px",
-          }}
-          className="title"
-        >
-          NOTICE BOARD
-        </h1>
+        <h1 className="title">NOTICE BOARD</h1>
       </Link>
       <AuthOptions />
     </header>
