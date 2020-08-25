@@ -67,7 +67,17 @@ export const noticeRenderer = ({ noticeFileType, noticeFile, title, _id }) => {
         rel="noopener noreferrer"
         target="_blank"
       >
-        <i class="fas fa-image"></i>
+        <div
+          style={{
+            marginTop: 20,
+            marginBottom: 20,
+            width: "200px",
+            display: "inline",
+          }}
+        >
+          <img src="/icons8-noticeboard-96.png" alt="imageNotice" />
+          <p>{title}</p>
+        </div>
       </a>
     );
   }
