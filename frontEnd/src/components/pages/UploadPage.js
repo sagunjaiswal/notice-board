@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { noticeUploadHandler, noticeRenderer } from "../../helperMethod";
 import SingleNotice from "./SingleNotice";
 import axios from "axios";
+import moment from "moment";
 
 export default function UploadPage() {
   const myRef = React.createRef();
+  const [title, setTitle] = useState("");
+  const [noticeDate, setNoticeDate] = useState(moment().format("YYYY-MM-DD"));
   const [noticeFile, setNoticeFile] = useState(null);
-  console.log("UploadPage -> noticeFile", noticeFile);
   const [uploadedNotices, setUploadedNotices] = useState([]);
 
   useEffect(() => {
@@ -21,18 +23,53 @@ export default function UploadPage() {
   }, []);
 
   const _onChangeHandler = (e) => {
-    setNoticeFile(e.target.files[0]);
+    if (e.target.name === "title") {
+      setTitle(e.target.value);
+    } else if (e.target.name === "noticeDate") {
+      setNoticeDate(e.target.value);
+    } else {
+      setNoticeFile(e.target.files[0]);
+    }
+  };
+
+  const formDataBundler = () => {
+    const dataToBeSent = {
+      title: title,
+      noticeDate: noticeDate,
+      noticeFile: noticeFile,
+    };
+    console.log("formDataBundler -> dataToBeSent", dataToBeSent);
+    return dataToBeSent;
   };
 
   return (
     <div className="page">
+      <input
+        type="text"
+        name="title"
+        id="title"
+        placeholder="Title"
+        onChange={(e) => _onChangeHandler(e)}
+        required
+      />
+      <br />
+      <input
+        type="date"
+        name="noticeDate"
+        id="noticeDate"
+        value={noticeDate}
+        max={moment().format("YYYY-MM-DD")}
+        onChange={(e) => _onChangeHandler(e)}
+      />
+      <br />
       <button
         className="uploadButton"
         name="fileSelector"
         onClick={() => myRef.current.click()}
       >
-        Select Notice Image
+        Select Notice File
       </button>
+      <strong>{noticeFile ? noticeFile.name : null}</strong>
       <input
         ref={myRef}
         type="file"
@@ -45,7 +82,7 @@ export default function UploadPage() {
       <button
         className="uploadButton"
         name="fileSelector"
-        onClick={() => noticeUploadHandler(noticeFile)}
+        onClick={() => noticeUploadHandler(formDataBundler())}
       >
         Upload Notice{" "}
       </button>

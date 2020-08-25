@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 
-export const noticeUploadHandler = (noticeFile) => {
+export const noticeUploadHandler = ({ title, noticeDate, noticeFile }) => {
   console.log("data:>>", noticeFile);
   if (noticeFile) {
     const noticeFileType = noticeFile.type;
@@ -12,14 +12,17 @@ export const noticeUploadHandler = (noticeFile) => {
         headers: { "content-type": "multipart/form-data" },
       };
       const formData = new FormData();
+      formData.append("title", title);
+      formData.append("noticeDate", noticeDate);
       formData.append("noticeFile", noticeFile);
       formData.append("noticeFileType", noticeFileType);
+      console.log("noticeUploadHandler -> formData", formData);
       axios
         .post("http://localhost:5000/notice", formData, config)
         .then((response) => {
           console.log(response);
           alert("YOUR NOTICE IS SUCCESSFULLY SUBMITTED");
-          // window.location.reload();
+          window.location.reload();
         })
         .catch((error) => {
           alert(

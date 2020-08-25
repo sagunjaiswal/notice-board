@@ -49,6 +49,8 @@ router.get("/", async (req, res) => {
 //Posting Notice
 router.post("/", upload.single("noticeFile"), async (req, res) => {
   const newNotice = new notice({
+    title: req.body.title,
+    noticeDate: req.body.noticeDate,
     noticeFile: req.file.path,
     noticeFileType: req.file.mimetype,
   });

@@ -1,12 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { noticeRenderer } from "../../helperMethod";
+import React from "react";
 
 const SingleNotice = ({ notice }) => {
-  return (
-    <div key={notice._id}>
-      {noticeRenderer(notice.noticeFileType, notice.noticeFile)}
-    </div>
-  );
+  return <p>Single Noitce</p>;
 };
 
 export default SingleNotice;
