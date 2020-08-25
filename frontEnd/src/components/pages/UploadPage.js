@@ -63,7 +63,7 @@ export default function UploadPage() {
       />
       <br />
       <button
-        className="uploadButton"
+        className="selectFileBtn"
         name="fileSelector"
         onClick={() => myRef.current.click()}
       >
@@ -87,17 +87,11 @@ export default function UploadPage() {
         Upload Notice{" "}
       </button>
       <br />
-      <div style={{ marginTop: 20 }}>
-        {uploadedNotices.length ? (
-          uploadedNotices.map((notice) => (
-            <div key={notice._id}>
-              {noticeRenderer(notice.noticeFileType, notice.noticeFile)}
-            </div>
-          ))
-        ) : (
-          <p>No notice</p>
-        )}
-      </div>
+      {uploadedNotices.length ? (
+        uploadedNotices.map((notice) => noticeRenderer(notice))
+      ) : (
+        <p>No notice</p>
+      )}
     </div>
   );
 }

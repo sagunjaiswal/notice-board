@@ -37,34 +37,38 @@ export const noticeUploadHandler = ({ title, noticeDate, noticeFile }) => {
   }
 };
 
-export const noticeRenderer = (noticeFileType, noticeFile) => {
+export const noticeRenderer = ({ noticeFileType, noticeFile, title, _id }) => {
   if (noticeFileType === "application/pdf") {
     return (
-      // <embed
-      //   src={`http://localhost:5000/${noticeFile}`}
-      //   pluginspage="http://www.adobe.com/products/acrobat/readstep2.html"
-      //   type="application/pdf"
-      //   height="700px"
-      //   width="500"
-      // />
-      //   <iframe
-      //     src={`http://docs.google.com/gview?
-      // url=http://localhost:5000/${noticeFile}&embedded=true`}
-      //     style={{ width: "600px", height: "500px" }}
-      //     frameborder="0"
-      //   ></iframe>
-      <object
-        width="400px"
-        height="400px"
-        data={`http://localhost:5000/${noticeFile}`}
-      ></object>
+      <a
+        key={_id}
+        href={`http://localhost:5000/${noticeFile}`}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <div
+          style={{
+            marginTop: 20,
+            marginBottom: 20,
+            width: "200px",
+            display: "inline",
+          }}
+        >
+          <img src="/iconfinder_application-illustrator_8889.png" alt={title} />
+          <p>{title}</p>
+        </div>
+      </a>
     );
   } else {
     return (
-      <iframe
-        style={{ display: "inline", marginBottom: 20 }}
-        src={`http://localhost:5000/${noticeFile}`}
-      ></iframe>
+      <a
+        key={_id}
+        href={`http://localhost:5000/${noticeFile}`}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <i class="fas fa-image"></i>
+      </a>
     );
   }
 };

@@ -153,8 +153,17 @@ body {
   color: #fff;
 }
 /*****home*****/
+.selectFileBtn {
+  margin-left: 29px;
+  padding: 0.8rem 0.8rem;
+  font-size: 1.1rem;
+  background-color: #bce4aa;
+  border: 1px solid #6aa051;
+  border-radius: 8px;
+}
 .uploadButton {
   margin-left: 29px;
+  margin-bottom: 30px;
   padding: 0.8rem 0.8rem;
   font-size: 1.1rem;
   background-color: #bce4aa;
