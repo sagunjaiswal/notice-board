@@ -68,7 +68,13 @@ export const noticeUploadHandler = ({ title, noticeDate, noticeFile }) => {
   }
 };
 
-export const noticeRenderer = ({ noticeFileType, noticeFile, title, _id }) => {
+export const noticeRenderer = ({
+  noticeFileType,
+  noticeFile,
+  noticeDate,
+  title,
+  _id,
+}) => {
   if (noticeFileType === "application/pdf") {
     return (
       <a
@@ -87,6 +93,7 @@ export const noticeRenderer = ({ noticeFileType, noticeFile, title, _id }) => {
         >
           <img src="/iconfinder_application-illustrator_8889.png" alt={title} />
           <p>{title}</p>
+          <p>{noticeDate}</p>
         </div>
       </a>
     );
