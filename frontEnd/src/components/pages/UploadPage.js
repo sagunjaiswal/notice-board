@@ -49,7 +49,7 @@ export default function UploadPage() {
           type="text"
           name="title"
           id="title"
-          placeholder="Title"
+          placeholder="Notice Title*"
           onChange={(e) => _onChangeHandler(e)}
           required
         />
@@ -74,7 +74,7 @@ export default function UploadPage() {
         <input
           ref={myRef}
           type="file"
-          accept=".pdf,.jpeg"
+          accept=".pdf,.jpeg,.jpg,.png"
           id="upload"
           style={{ display: "none" }}
           onChange={(e) => _onChangeHandler(e)}

@@ -1,6 +1,9 @@
 import axios from "axios";
 import React from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
+toast.configure();
 export const noticeUploadHandler = ({ title, noticeDate, noticeFile }) => {
   console.log("data:>>", noticeFile);
   if (noticeFile) {
@@ -21,19 +24,47 @@ export const noticeUploadHandler = ({ title, noticeDate, noticeFile }) => {
         .post("http://localhost:5000/notice", formData, config)
         .then((response) => {
           console.log(response);
-          alert("YOUR NOTICE IS SUCCESSFULLY SUBMITTED");
+          const notify = () => {
+            toast.info("YEYY! YOUR NOTICE IS SUBMITTED SUCCESSFULLY", {
+              position: toast.POSITION.TOP_CENTER,
+              autoClose: 5000,
+            });
+          };
+          notify();
           window.location.reload();
         })
         .catch((error) => {
-          alert(
-            "DUE TO SOME TECHNICAL ERROR YOUR NOTICE CANNOT BE SUBMITTED AT THE MOMENT"
-          );
+          const notify = () => {
+            toast(
+              "DUE TO SOME TECHNICAL ERROR WE COULDNT UPLOAD YOUR NOTICE(make sure all the fields are filled), try again later...",
+              {
+                position: toast.POSITION.TOP_CENTER,
+                autoClose: 5000,
+              }
+            );
+          };
+          notify();
         });
     } else {
-      alert("Invalid File");
+      const notify = () => {
+        toast(
+          "INVALID FILE TYPE, (the allowed file formats are .pdf, .jpg and .png only)",
+          {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 5000,
+          }
+        );
+      };
+      notify();
     }
   } else {
-    alert("Please Select a File");
+    const notify = () => {
+      toast("Please select a file", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 5000,
+      });
+    };
+    notify();
   }
 };
 

@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="page">
       {userData.user ? null : (
-        <p>
+        <p style={{ color: "red", fontSize: "smaller" }}>
           Only faculty members can register or login for uploading the notice...
         </p>
       )}
