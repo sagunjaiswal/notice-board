@@ -5,10 +5,10 @@ import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
 export const noticeUploadHandler = ({ title, noticeDate, noticeFile }) => {
-  console.log("data:>>", noticeFile);
+  // console.log("data:>>", noticeFile);
   if (noticeFile) {
     const noticeFileType = noticeFile.type;
-    const types = ["application/pdf", "image/jpeg"];
+    const types = ["application/pdf", "image/jpeg", "image/png"];
     if (types.includes(noticeFileType)) {
       console.log("noticeUploadHandler -> noticeFile", noticeFile);
       const config = {
