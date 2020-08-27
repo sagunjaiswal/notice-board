@@ -8,12 +8,12 @@ function SingleNotice(props) {
   const [pageNumber, setPageNumber] = useState(1);
   console.log("rendering notice files", props.notice.noticeFile);
 
-  const goToPrevPage = () =>
-    // this.setState(state => ({ pageNumber: state.pageNumber - 1 }));
-    setPageNumber(pageNumber - 1);
-  const goToNextPage = () =>
-    // this.setState(state => ({ pageNumber: state.pageNumber + 1 }));
-    setPageNumber(pageNumber + 1);
+  const goToPrevPage = () => {
+    if (pageNumber > 1) setPageNumber(pageNumber - 1);
+  };
+  const goToNextPage = () => {
+    if (pageNumber < numPages) setPageNumber(pageNumber + 1);
+  };
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -21,10 +21,6 @@ function SingleNotice(props) {
 
   return (
     <div>
-      <nav>
-        <button onClick={goToPrevPage}>Prev</button>
-        <button onClick={goToNextPage}>Next</button>
-      </nav>
       <Document
         file={`http://localhost:5000/${props.notice.noticeFile}`}
         onLoadSuccess={onDocumentLoadSuccess}
@@ -34,6 +30,10 @@ function SingleNotice(props) {
       <p>
         Page {pageNumber} of {numPages}
       </p>
+      <nav>
+        <button onClick={goToPrevPage}>Prev</button>
+        <button onClick={goToNextPage}>Next</button>
+      </nav>
     </div>
   );
 }
