@@ -1,25 +1,10 @@
 import React, { useState } from "react";
-// import { noticeRenderer } from "../../helperMethod";
-import { Document, Page, Text, View, pdfjs, StyleSheet } from "react-pdf";
-// import { StyleSheet } from "@react-pdf/renderer";
+import { Document, Page, pdfjs } from "react-pdf";
 
 function SingleNotice(props) {
   pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
-  console.log("rendering notice files", props.notice.noticeFile);
-
-  // const styles = StyleSheet.create({
-  //   section: {
-  //     width: 200,
-  //     "@media max-width: 400": {
-  //       width: 300,
-  //     },
-  //     "@media orientation: landscape": {
-  //       width: 400,
-  //     },
-  //   },
-  // });
 
   const goToPrevPage = () => {
     if (pageNumber > 1) setPageNumber(pageNumber - 1);

@@ -11,7 +11,6 @@ const DisplayNotices = () => {
       .get("http://localhost:5000/notice")
       .then((res) => {
         setUploadedNotices(res.data);
-        console.log(res.data);
         setIsLoading(false);
       })
       .catch((error) => {
