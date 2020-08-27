@@ -55,18 +55,15 @@ export default function App() {
       <BrowserRouter>
         <UserContext.Provider value={{ userData, setUserData }}>
           <Navbar />
-          <div>
-            {/* className="container"> */}
-            <Switch>
-              <Route
-                exact
-                path="/"
-                component={userData.user ? UploadPage : Home}
-              />
-              <Route path="/login" component={Login} />
-              <Route path="/register" component={Register} />
-            </Switch>
-          </div>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              component={userData.user ? UploadPage : Home}
+            />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+          </Switch>
         </UserContext.Provider>
       </BrowserRouter>
     </>

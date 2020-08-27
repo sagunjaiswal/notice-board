@@ -14,7 +14,13 @@ export default function Home() {
         </p>
       )}
 
-      {userData.user ? <UploadPage /> : <DisplayNotices />}
+      {userData.user ? (
+        <UploadPage />
+      ) : (
+        <div className="notices-container">
+          <DisplayNotices />
+        </div>
+      )}
     </div>
   );
 }

@@ -24,7 +24,11 @@ const DisplayNotices = () => {
       <h1>Loading...</h1>
     ) : uploadedNotices.length ? (
       uploadedNotices.map((notice) => {
-        return <SingleNotice key={notice._id} notice={notice} />;
+        return (
+          <div className="notices-container">
+            <SingleNotice key={notice._id} notice={notice} />
+          </div>
+        );
       })
     ) : (
       <h1>No notice</h1>

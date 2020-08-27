@@ -36,7 +36,6 @@ h3,
 h4,
 h5,
 h6,
-p,
 ul,
 ol {
   margin: 2em 0;
@@ -67,6 +66,27 @@ body {
 .login-register-form {
   width: 65%;
   padding-left: 10%;
+}
+
+.notices-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: -15%;
+}
+
+.next-prev-btn {
+  text-decoration: none;
+  display: inline-block;
+  padding: 3px;
+  font-size: 10px;
+  font-weight: bolder;
+  width: 30px;
+  text-align: center;
+  background-color: #a0a0a0;
+  color: white;
+  border-radius: 50%;
 }
 
 /**********HEADER*********/
