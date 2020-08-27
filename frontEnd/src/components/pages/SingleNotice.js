@@ -46,21 +46,21 @@ function SingleNotice(props) {
         >
           <Page pageNumber={pageNumber} height="1200" width="200" />
         </Document>
-        <p>{props.notice.title}</p>
-        <p>{props.notice.noticeDate}</p>
-        <p style={{ fontSize: "10px" }}>
-          Page {pageNumber} / {numPages}
-        </p>
-
-        <nav>
-          <button className="next-prev-btn" onClick={goToPrevPage}>
-            &lt;
-          </button>
-          <button className="next-prev-btn" onClick={goToNextPage}>
-            &gt;
-          </button>
-        </nav>
       </a>
+      <p style={{ color: "#6aa051" }}>{props.notice.title}</p>
+      <p>{props.notice.noticeDate}</p>
+      <p style={{ fontSize: "10px" }}>
+        Page {pageNumber} / {numPages}
+      </p>
+
+      <nav>
+        <button className="next-prev-btn" onClick={goToPrevPage}>
+          &lt;
+        </button>
+        <button className="next-prev-btn" onClick={goToNextPage}>
+          &gt;
+        </button>
+      </nav>
     </div>
   );
 }
