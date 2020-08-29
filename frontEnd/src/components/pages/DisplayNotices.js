@@ -26,8 +26,6 @@ const DisplayNotices = () => {
     _id,
   }) => {
     if (noticeFileType === "application/pdf") {
-      // return uploadedNotices.length
-      // ? uploadedNotices.map((notice) => {
       return (
         <div className="notices-container">
           <SingleNotice
@@ -36,29 +34,7 @@ const DisplayNotices = () => {
           />
         </div>
       );
-      // })
-      // : null;
-    }
-    // <a
-    //   key={_id}
-    //   href={`http://localhost:5000/${noticeFile}`}
-    //   rel="noopener noreferrer"
-    //   target="_blank"
-    // >
-    //   <div
-    //     style={{
-    //       marginTop: 20,
-    //       marginBottom: 20,
-    //       width: "200px",
-    //       display: "inline",
-    //     }}
-    //   >
-    //     <img src="/iconfinder_application-illustrator_8889.png" alt={title} />
-    //     <p>{title}</p>
-    //     <p>{noticeDate}</p>
-    //   </div>
-    // </a>
-    else {
+    } else {
       return (
         <a
           key={_id}
@@ -91,8 +67,6 @@ const DisplayNotices = () => {
         const { noticeFileType, noticeFile, noticeDate, title, _id } = notice;
 
         if (noticeFileType === "application/pdf") {
-          // return uploadedNotices.length
-          // ? uploadedNotices.map((notice) => {
           return (
             <div className="notices-container">
               <SingleNotice key={notice._id} notice={notice} />
@@ -101,23 +75,23 @@ const DisplayNotices = () => {
         } else {
           return (
             <div className="notices-container">
-              <a
-                key={_id}
-                href={`http://localhost:5000/${noticeFile}`}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <div style={{ padding: "80px", paddingTop: "100px" }}>
+              <div style={{ padding: "80px", paddingTop: "100px" }}>
+                <a
+                  key={_id}
+                  href={`http://localhost:5000/${noticeFile}`}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
                   <img
                     src={`http://localhost:5000/${noticeFile}`}
                     alt="imageNotice"
-                    height="200px"
+                    height="260px"
                     width="200px"
                   />
-                  <p style={{ color: "#6aa051" }}>{title}</p>
-                  <p>{noticeDate}</p>
-                </div>
-              </a>
+                </a>
+                <p style={{ color: "#6aa051" }}>{title}</p>
+                <p>{noticeDate}</p>
+              </div>
             </div>
           );
         }
