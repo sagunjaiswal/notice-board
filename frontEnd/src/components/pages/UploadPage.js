@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { noticeUploadHandler, noticeRenderer } from "../../helperMethod";
+import { noticeUploadHandler } from "../../helperMethod";
 import SingleNotice from "./SingleNotice";
 import axios from "axios";
 import moment from "moment";
 
 export default function UploadPage() {
   const myRef = React.createRef();
+
   const [title, setTitle] = useState("");
   const [noticeDate, setNoticeDate] = useState(moment().format("YYYY-MM-DD"));
   const [noticeFile, setNoticeFile] = useState(null);
   const [uploadedNotices, setUploadedNotices] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios
       .get("http://localhost:5000/notice")
       .then((res) => {
         setUploadedNotices(res.data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
@@ -40,6 +43,48 @@ export default function UploadPage() {
     };
     console.log("formDataBundler -> dataToBeSent", dataToBeSent);
     return dataToBeSent;
+  };
+
+  const getContent = () => {
+    return isLoading ? (
+      <h1>Loading...</h1>
+    ) : uploadedNotices.length ? (
+      uploadedNotices.map((notice) => {
+        const { noticeFileType, noticeFile, noticeDate, title, _id } = notice;
+
+        if (noticeFileType === "application/pdf") {
+          return (
+            <div className="notices-container">
+              <SingleNotice key={notice._id} notice={notice} />
+            </div>
+          );
+        } else {
+          return (
+            <div className="notices-container">
+              <div style={{ padding: "80px", paddingTop: "100px" }}>
+                <a
+                  key={_id}
+                  href={`http://localhost:5000/${noticeFile}`}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    src={`http://localhost:5000/${noticeFile}`}
+                    alt="imageNotice"
+                    height="260px"
+                    width="200px"
+                  />
+                </a>
+                <p style={{ color: "#6aa051" }}>{title}</p>
+                <p>{noticeDate}</p>
+              </div>
+            </div>
+          );
+        }
+      })
+    ) : (
+      <h1>No notice</h1>
+    );
   };
 
   return (
@@ -89,11 +134,7 @@ export default function UploadPage() {
         </button>
       </div>
       <br />
-      {uploadedNotices.length ? (
-        uploadedNotices.map((notice) => noticeRenderer(notice))
-      ) : (
-        <h1>Loading notices...</h1>
-      )}
+      {getContent()}
     </div>
   );
 }

@@ -18,51 +18,10 @@ const DisplayNotices = () => {
       });
   }, []);
 
-  const noticeRenderer = ({
-    noticeFileType,
-    noticeFile,
-    noticeDate,
-    title,
-    _id,
-  }) => {
-    if (noticeFileType === "application/pdf") {
-      return (
-        <div className="notices-container">
-          <SingleNotice
-            key={_id}
-            notice={(noticeFileType, noticeFile, noticeDate, title, _id)}
-          />
-        </div>
-      );
-    } else {
-      return (
-        <a
-          key={_id}
-          href={`http://localhost:5000/${noticeFile}`}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <div
-            style={{
-              marginTop: 20,
-              marginBottom: 20,
-              width: "200px",
-              display: "inline",
-            }}
-          >
-            <img src="/icons8-noticeboard-96.png" alt="imageNotice" />
-            <p>{title}</p>
-          </div>
-        </a>
-      );
-    }
-  };
-
   const getContent = () => {
     return isLoading ? (
       <h1>Loading...</h1>
     ) : uploadedNotices.length ? (
-      // uploadedNotices.map((notice) => noticeRenderer(notice))
       uploadedNotices.map((notice) => {
         const { noticeFileType, noticeFile, noticeDate, title, _id } = notice;
 
