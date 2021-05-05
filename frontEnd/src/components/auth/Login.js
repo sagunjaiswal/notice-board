@@ -54,6 +54,9 @@ export default function Login() {
 
   return (
     <div className="page">
+      <div className="image-container">
+        <img src="/notice-board-illustrator.png"></img>
+      </div>
       <div className="login-register-form">
         <h2>Login</h2>
         {error && (

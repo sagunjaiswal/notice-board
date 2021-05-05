@@ -8,8 +8,7 @@ const User = require("../models/userModel");
 router.post("/register", async (req, res) => {
   try {
     ///the destructuring of the inputed data
-    let { email, password, passwordCheck, uniqueOrganizationCode } = req.body;
-
+    const { email, password, passwordCheck, uniqueOrganizationCode } = req.body;
     //validtion
     if (!email || !password || !passwordCheck || !uniqueOrganizationCode)
       return res.status(400).json({ msg: "Not all fields have been entered" });
@@ -34,7 +33,6 @@ router.post("/register", async (req, res) => {
       return res
         .status(400)
         .json({ msg: "An account with this email already exists!" });
-
     //we dont want to ever store the password as a plain text in the database, HASHING PASSWORD
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
@@ -43,7 +41,7 @@ router.post("/register", async (req, res) => {
     const newUser = new User({
       email,
       password: passwordHash,
-      uniqueOrganizationCode,
+      uniqueOrganizationCode: uniqueOrganizationCode,
     });
     //save the new user
     const savedUser = await newUser.save();
