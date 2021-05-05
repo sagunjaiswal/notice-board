@@ -6,7 +6,7 @@
   "author": "pronayguha <pronay.guha@aot.edu.in>",
   "license": "MIT",
   "scripts": {
-    "dev": "concurrently \"cd backEnd && yarn run dev\" \"cd frontEnd && yarn start\" "
+    "dev": "concurrently \"cd server && yarn run dev\" \"cd client && yarn start\" "
   },
   "dependencies": {
     "axios": "^0.20.0",
