@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import UserContext from "../../context/UserContext";
+import UserContext from "../../global/UserContext";
 import Axios from "axios";
 import ErrorNotice from "../layout/ErrorNotice";
 import { toast } from "react-toastify";
