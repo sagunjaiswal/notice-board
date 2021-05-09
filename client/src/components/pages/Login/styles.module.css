@@ -1,0 +1,72 @@
+.loginFormContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.loginForm {
+  flex: 7;
+  width: 50%;
+  padding-top: 80px;
+}
+
+.loginForm h2 {
+  border-bottom: 2px solid #000;
+  width: 75%;
+}
+
+.loginForm form {
+  width: 75%;
+}
+
+.imageContainer {
+  flex: 9;
+}
+
+.image-container img {
+  width: 80%;
+}
+
+.passwordInputContainer {
+  position: relative;
+}
+
+.passwordInputContainer span {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+/* @media only screen and (max-width: 1090px) {
+  .image-container img {
+    width: 80%;
+  }
+  .login-register-form {
+    margin-left: -20rem;
+  }
+}
+@media only screen and (max-width: 950px) {
+  .image-container img {
+    width: 60%;
+  }
+  .login-register-form {
+    margin-left: -34rem;
+  }
+}
+@media only screen and (max-width: 710px) {
+  .image-container img {
+    width: 50%;
+  }
+  .login-register-form {
+    margin-left: -44rem;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .image-container img {
+    width: 85%;
+  }
+  .login-register-form {
+    margin: 3rem;
+    margin-top: -50px;
+  }
+} */
