@@ -5,15 +5,16 @@ import Axios from "axios";
 import ErrorNotice from "../../layout/ErrorNotice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import styles from "./styles.module.css";
 toast.configure();
+
 export default function Register() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [passwordCheck, setPasswordCheck] = useState();
   const [uniqueOrganizationCode, setUniqueOrganizationCode] = useState();
   const [error, setError] = useState();
-
+  const [showPwd, setShowPwd] = useState(false);
   const { userData, setUserData } = useContext(UserContext);
 
   const history = useHistory();
@@ -64,13 +65,18 @@ export default function Register() {
       if (userData) notifyError();
     }
   };
+  //change the password visibility state
+  const pwdVisibilityChangeHandler = () => {
+    const prevState = showPwd;
+    setShowPwd(!prevState);
+  };
 
   return (
-    <div className="page">
-      <div className="image-container">
+    <div className={styles.registrationFormContainer}>
+      <div className={styles.imageContainer}>
         <img src="/notice-board-illustrator.png"></img>
       </div>
-      <div className="login-register-form">
+      <div className={styles.regForm}>
         <h2>Register</h2>
 
         {error && (
@@ -78,7 +84,7 @@ export default function Register() {
         )}
         <form className="form" onSubmit={submit}>
           <label htmlFor="register-email">
-            Email<span style={{ color: "red" }}>*</span>
+            Email<sup style={{ color: "red" }}>*</sup>
           </label>
           <input
             id="register-email"
@@ -87,15 +93,25 @@ export default function Register() {
           />
 
           <label htmlFor="register-password">
-            Password<span style={{ color: "red" }}>*</span>
+            Password<sup style={{ color: "red" }}>*</sup>
           </label>
-          <input
-            id="register-password"
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className={styles.passwordInputContainer}>
+            <input
+              id="register-password"
+              type={showPwd ? "text" : "password"}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {password && password.length ? (
+              <span onClick={() => pwdVisibilityChangeHandler()}>
+                <img
+                  src={showPwd ? "/assets/hidepwd.svg" : "/assets/showpwd.svg"}
+                  alt="show-password"
+                />
+              </span>
+            ) : null}
+          </div>
           <label htmlFor="register-password">
-            Verify Password<span style={{ color: "red" }}>*</span>
+            Verify Password<sup style={{ color: "red" }}>*</sup>
           </label>
           <input
             // placeholder="Verify password"
@@ -104,7 +120,7 @@ export default function Register() {
           />
 
           <label htmlFor="register-uniqueOrganizationCode">
-            Unique Organization Code<span style={{ color: "red" }}>*</span>
+            Unique Organization Code<sup style={{ color: "red" }}>*</sup>
           </label>
           <input
             id="register-uniqueOrganizationCode"
