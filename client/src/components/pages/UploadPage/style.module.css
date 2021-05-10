@@ -1,0 +1,56 @@
+.uploadFormContainer {
+  padding: 10px 0;
+}
+
+.uploadForm {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.uploadForm > * {
+  width: 50%;
+}
+
+.inputSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.inputSection input {
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #000;
+}
+
+.uploadForm button {
+  padding: 0.8rem 0.8rem;
+  font-size: 1.5rem;
+  border-radius: 8px;
+  margin-top: 10px;
+  color: #fff;
+}
+
+.selectFileBtn {
+  background-color: #007bff;
+}
+
+.selectFileBtn:hover {
+  background-color: #0051ff;
+}
+
+.uploadButton {
+  background-color: #6aa051;
+  margin-bottom: 30px;
+}
+
+.uploadButton:enabled:hover {
+  background-color: #12852d;
+}
+
+.uploadButton:disabled {
+  background-color: #35bb54a2;
+}

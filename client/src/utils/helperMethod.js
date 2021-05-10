@@ -2,10 +2,12 @@ import axios from "axios";
 import React from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import ImageNotice from "../components/pages/ImageNotice";
+import PdfNoticeRenderer from "../components/pages/PdfNoticeRenderer";
 toast.configure();
+
 export const noticeUploadHandler = ({ title, noticeDate, noticeFile }) => {
-  // console.log("data:>>", noticeFile);
+  console.log("data:>>", noticeFile);
   if (noticeFile) {
     const noticeFileType = noticeFile.type;
     const types = ["application/pdf", "image/jpeg", "image/png"];
@@ -19,7 +21,6 @@ export const noticeUploadHandler = ({ title, noticeDate, noticeFile }) => {
       formData.append("noticeDate", noticeDate);
       formData.append("noticeFile", noticeFile);
       formData.append("noticeFileType", noticeFileType);
-      console.log("noticeUploadHandler -> formData", formData);
       axios
         .post("http://localhost:5000/notice", formData, config)
         .then((response) => {
@@ -34,6 +35,10 @@ export const noticeUploadHandler = ({ title, noticeDate, noticeFile }) => {
           window.location.reload();
         })
         .catch((error) => {
+          console.log(
+            "🚀 ~ file: helperMethod.js ~ line 37 ~ noticeUploadHandler ~ error",
+            error
+          );
           const notify = () => {
             toast(
               "DUE TO SOME TECHNICAL ERROR WE COULDNT UPLOAD YOUR NOTICE(make sure all the fields are filled), try again later...",
@@ -68,55 +73,26 @@ export const noticeUploadHandler = ({ title, noticeDate, noticeFile }) => {
   }
 };
 
-export const noticeRenderer = ({
-  noticeFileType,
-  noticeFile,
-  noticeDate,
-  title,
-  _id,
-}) => {
+export const fetchNotice = (setUploadedNotices, setIsLoading) => {
+  setIsLoading(true);
+  axios
+    .get("http://localhost:5000/notice")
+    .then((res) => {
+      setUploadedNotices(res.data);
+      setIsLoading(false);
+    })
+    .catch((error) => {
+      console.log(error);
+      setIsLoading(false);
+    });
+};
+
+export const noticeDisplayHandler = (notice) => {
+  const { noticeFileType } = notice;
+
   if (noticeFileType === "application/pdf") {
-    return (
-      <a
-        key={_id}
-        href={`http://localhost:5000/${noticeFile}`}
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <div
-          style={{
-            marginTop: 20,
-            marginBottom: 20,
-            width: "200px",
-            display: "inline",
-          }}
-        >
-          <img src="/iconfinder_application-illustrator_8889.png" alt={title} />
-          <p>{title}</p>
-          <p>{noticeDate}</p>
-        </div>
-      </a>
-    );
+    return <PdfNoticeRenderer notice={notice} />;
   } else {
-    return (
-      <a
-        key={_id}
-        href={`http://localhost:5000/${noticeFile}`}
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <div
-          style={{
-            marginTop: 20,
-            marginBottom: 20,
-            width: "200px",
-            display: "inline",
-          }}
-        >
-          <img src="/icons8-noticeboard-96.png" alt="imageNotice" />
-          <p>{title}</p>
-        </div>
-      </a>
-    );
+    return <ImageNotice notice={notice} />;
   }
 };

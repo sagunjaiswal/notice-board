@@ -10,7 +10,8 @@ const app = express();
 app.use(express.json()); //to read json objects to request
 //activation of cors in our express app
 app.use(cors());
-app.use("/uploads", express.static("uploads"));
+// app.use("/uploads", express.static("uploads"));
+app.use(express.static(__dirname));
 
 //if this project runs online then it will check do we have an env online and if we use it locally its gonna use localhost:5000
 const PORT = process.env.PORT || 5000;

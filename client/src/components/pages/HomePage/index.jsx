@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import UserContext from "../../context/UserContext";
-import DisplayNotices from "./DisplayNotices";
-import UploadPage from "./UploadPage";
+import UserContext from "../../../global/UserContext";
+import DisplayNotices from "../DisplayNotice/index";
+import UploadPage from "../UploadPage/index";
 
 export default function Home() {
   const { userData } = useContext(UserContext);

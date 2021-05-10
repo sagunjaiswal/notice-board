@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 
-function SingleNotice(props) {
+const PdfNotice = ({ notice }) => {
+  const { _id, noticeFile, title, noticeDate } = notice;
   pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
@@ -20,20 +21,20 @@ function SingleNotice(props) {
   return (
     <div style={{ padding: "100px" }}>
       <a
-        key={props.notice._id}
-        href={`http://localhost:5000/${props.notice.noticeFile}`}
+        key={_id}
+        href={`http://localhost:5000/${noticeFile}`}
         rel="noopener noreferrer"
         target="_blank"
       >
         <Document
-          file={`http://localhost:5000/${props.notice.noticeFile}`}
+          file={`http://localhost:5000/${noticeFile}`}
           onLoadSuccess={onDocumentLoadSuccess}
         >
           <Page pageNumber={pageNumber} height="1200" width="200" />
         </Document>
       </a>
-      <p style={{ color: "#6aa051" }}>{props.notice.title}</p>
-      <p>{props.notice.noticeDate}</p>
+      <p style={{ color: "#6aa051" }}>{title}</p>
+      <p>{noticeDate}</p>
       <p style={{ fontSize: "10px" }}>
         Page {pageNumber} / {numPages}
       </p>
@@ -48,5 +49,5 @@ function SingleNotice(props) {
       </nav>
     </div>
   );
-}
-export default SingleNotice;
+};
+export default PdfNotice;

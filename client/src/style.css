@@ -43,20 +43,10 @@ ol {
 
 body {
   font-family: "Roboto Slab", serif;
-  /* background-color: black; */
-  /* color: #fff; */
 }
-.notices-container{
-  /* background: url("/notice-board-illustrator.png") no-repeat center center fixed; */
-  /* background-repeat: no-repeat; */
-  /* background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover; */
-  /* width: 80%; */
-   height: 80vh;
-   /* background-attachment: fixed; */
-   /* background-position: 50% 50%; */
+
+.notices-container {
+  height: 80vh;
 }
 /*register-login form desgin begins*/
 
@@ -66,48 +56,48 @@ body {
   max-width: 95%;
   margin: 0 auto;
   display: flex;
-  flex-wrap:wrap ;
+  flex-wrap: wrap;
 }
 .login-register-form {
- flex:7;
-  width: 50%;  
+  flex: 7;
+  width: 50%;
 }
-.image-container{
+.image-container {
   margin-left: -15%;
   margin-top: -10%;
 }
 
 @media only screen and (max-width: 1090px) {
-  .image-container img{    
-    width: 80%;    
+  .image-container img {
+    width: 80%;
   }
   .login-register-form {
     margin-left: -20rem;
   }
 }
-@media only screen and (max-width: 950px) {  
-  .image-container img{    
-    width: 60%;    
+@media only screen and (max-width: 950px) {
+  .image-container img {
+    width: 60%;
   }
   .login-register-form {
     margin-left: -34rem;
   }
 }
 @media only screen and (max-width: 710px) {
-  .image-container img{    
-    width: 50%;    
+  .image-container img {
+    width: 50%;
   }
   .login-register-form {
     margin-left: -44rem;
   }
 }
 @media only screen and (max-width: 500px) {
-  .image-container img{    
-    width: 85%;    
+  .image-container img {
+    width: 85%;
   }
-  .login-register-form{
+  .login-register-form {
     margin: 3rem;
-    margin-top:-50px;
+    margin-top: -50px;
   }
 }
 /*register-login form desgin ends*/
@@ -123,14 +113,6 @@ body {
   width: 65%;
   padding-left: 10%;
 } */
-
-.notices-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-left: -15%;
-}
 
 .next-prev-btn {
   text-decoration: none;
@@ -277,24 +259,4 @@ body {
   height: 20px;
   border-radius: 50%;
   color: #fff;
-}
-/*****home*****/
-.selectFileBtn {
-  padding: 0.8rem 0.8rem;
-  font-size: 1.1rem;
-  background-color: #bce4aa;
-  border: 1px solid #6aa051;
-  border-radius: 8px;
-  width: 65%;
-  margin-top: 10px;
-}
-.uploadButton {
-  margin-bottom: 30px;
-  padding: 0.8rem 0.8rem;
-  font-size: 1.1rem;
-  background-color: #bce4aa;
-  border: 1px solid #6aa051;
-  border-radius: 8px;
-  width: 65%;
-  margin-top: 10px;
 }

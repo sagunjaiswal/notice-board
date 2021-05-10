@@ -1,11 +1,15 @@
 const router = require("express").Router();
 const notice = require("../models/NoticeModel");
 const multer = require("multer");
+const path = require("path");
+const fs = require("fs");
 
 //multer config
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "./uploads/");
+    fs.mkdir("./uploads/", (err) => {
+      cb(null, "./uploads/");
+    });
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname);
@@ -44,7 +48,6 @@ router.get("/", async (req, res) => {
     res.status(400).send(err);
   }
 });
-// const upload = multer({ dest: "uploads/" });
 
 //Posting Notice
 router.post("/", upload.single("noticeFile"), async (req, res) => {
@@ -62,6 +65,7 @@ router.post("/", upload.single("noticeFile"), async (req, res) => {
     res.status(400).send(err);
   }
 });
+
 router.get("/", async (req, res) => {
   try {
     const notices = await notice.find();
