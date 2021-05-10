@@ -1,24 +1,25 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import UserContext from "../../global/UserContext";
+import UserContext from "../../../global/UserContext";
 import Axios from "axios";
-import ErrorNotice from "../layout/ErrorNotice";
+import ErrorNotice from "../../layout/ErrorNotice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import styles from "./styles.module.css";
 
 toast.configure();
-export default function Login() {
+const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
-
+  const [showPwd, setShowPwd] = useState(false);
   const { userData, setUserData } = useContext(UserContext);
-
+  const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
 
   const submit = async (e) => {
     e.preventDefault();
-
+    setIsLoading(true);
     try {
       const loginUser = { email, password };
       const loginRes = await Axios.post(
@@ -40,6 +41,7 @@ export default function Login() {
       if (userData) notifySuccess();
       history.push("/");
     } catch (err) {
+      setIsLoading(false);
       //&& operator will only execute only if both the  sides are true
       err.response.data.msg && setError(err.response.data.msg);
       const notifyError = () => {
@@ -52,37 +54,63 @@ export default function Login() {
     }
   };
 
+  const pwdVisibilityChangeHandler = () => {
+    const prevState = showPwd;
+    setShowPwd(!prevState);
+  };
+
   return (
-    <div className="page">
-      <div className="image-container">
+    <div className={styles.loginFormContainer}>
+      {isLoading ? (
+        <h3 style={{ position: "absolute", top: 30 }}>
+          Loading! Please wait...
+        </h3>
+      ) : null}
+      <div className={styles.imageContainer}>
         <img src="/notice-board-illustrator.png"></img>
       </div>
-      <div className="login-register-form">
+      <div className={styles.loginForm}>
         <h2>Login</h2>
         {error && (
           <ErrorNotice message={error} clearError={() => setError(undefined)} />
         )}
         <form className="form" onSubmit={submit}>
           <label htmlFor="login-email">
-            Email<span style={{ color: "red" }}>*</span>
+            Email<sup style={{ color: "red" }}>*</sup>
           </label>
           <input
             id="login-email"
             type="email"
             onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your registered email..."
+            readOnly={isLoading}
           />
 
           <label htmlFor="login-password">
-            Password<span style={{ color: "red" }}>*</span>
+            Password<sup style={{ color: "red" }}>*</sup>
           </label>
-          <input
-            id="login-password"
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <input type="submit" value="Login" />
+          <div className={styles.passwordInputContainer}>
+            <input
+              id="login-password"
+              placeholder="Enter your password..."
+              type={showPwd ? "text" : "password"}
+              onChange={(e) => setPassword(e.target.value)}
+              readOnly={isLoading}
+            />
+            {password && password.length ? (
+              <span onClick={() => pwdVisibilityChangeHandler()}>
+                <img
+                  src={showPwd ? "/assets/hidepwd.svg" : "/assets/showpwd.svg"}
+                  alt="show-password"
+                />
+              </span>
+            ) : null}
+          </div>
+          <input disabled={isLoading} type="submit" value="Login" />
         </form>
       </div>
     </div>
   );
-}
+};
+
+export default Login;

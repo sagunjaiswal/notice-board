@@ -10,6 +10,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 64px;
 }
 .noNoticeWarning h1 {
   margin: 0;
