@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
+import styles from "./ImageNotice.module.css";
 
 const PdfNotice = ({ notice }) => {
   const { _id, noticeFile, title, noticeDate } = notice;
@@ -19,7 +20,7 @@ const PdfNotice = ({ notice }) => {
   }
 
   return (
-    <div style={{ padding: "100px" }}>
+    <div className={styles.pdfBox}>
       <a
         key={_id}
         href={`http://localhost:5000/${noticeFile}`}

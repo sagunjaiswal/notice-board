@@ -6,7 +6,6 @@ import styles from "./style.module.css";
 
 const UploadPage = () => {
   const myRef = React.createRef();
-
   const [title, setTitle] = useState("");
   const [noticeDate, setNoticeDate] = useState(moment().format("YYYY-MM-DD"));
   const [noticeFile, setNoticeFile] = useState(null);
