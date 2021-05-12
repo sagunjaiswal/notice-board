@@ -37,24 +37,25 @@
   float: left;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 729px) {
   .leftChild {
     display: none;
   }
   .rightChild {
+    padding-left: 2rem;
     background-image: url("./vector-creator.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
   }
 }
 
 @media only screen and (max-width: 690px) {
   .leftChild {
-    /* display: none; */
-    /* width: 25%; */
-    /* float: left; */
     margin-top: -40px;
     margin-left: -15rem;
     padding-right: 20px;
-    /* overflow: hidden; */
     position: fixed;
+  }
+  .rightChild {
   }
 }
