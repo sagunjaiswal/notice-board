@@ -34,8 +34,8 @@ const PdfNotice = ({ notice }) => {
           <Page pageNumber={pageNumber} height="1200" width="200" />
         </Document>
       </a>
-      <p style={{ color: "#6aa051" }}>{title}</p>
-      <p>{noticeDate}</p>
+      <p style={{ color: "#4B0082" }}>{title}</p>
+      <p style={{ color: "#808080	" }}>{noticeDate}</p>
       <p style={{ fontSize: "10px" }}>
         Page {pageNumber} / {numPages}
       </p>
