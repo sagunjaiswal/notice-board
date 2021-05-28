@@ -42,7 +42,6 @@ const upload = multer({
 router.get("/", async (req, res) => {
   try {
     const notices = await notice.find();
-    console.log("notices", notices);
     res.send(notices);
   } catch (err) {
     res.status(400).send(err);
@@ -59,7 +58,6 @@ router.post("/", upload.single("noticeFile"), async (req, res) => {
   });
   try {
     const notice = await newNotice.save();
-    console.log("notices", notice);
     res.send(notice);
   } catch (err) {
     res.status(400).send(err);
@@ -69,7 +67,6 @@ router.post("/", upload.single("noticeFile"), async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const notices = await notice.find();
-    console.log(notices);
     res.send(notices);
   } catch (err) {
     res.status(400).send(err);
