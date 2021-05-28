@@ -9,12 +9,6 @@ export default function Home() {
 
   return (
     <div className={styles.page}>
-      {/* {userData.user ? null : (
-        <p style={{ color: "red", fontSize: "smaller" }}>
-          Only faculty members can register or login for uploading the notice...
-        </p>
-      )} */}
-
       {userData.user ? (
         <UploadPage />
       ) : (
