@@ -1,61 +1,73 @@
-.noticeSectionContainer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+html {
+  scroll-behavior: smooth;
 }
 
-.noNoticeWarning {
+.container {
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  width: 98vw;
   align-items: center;
-  padding-top: 64px;
-}
-.noNoticeWarning h1 {
-  margin: 0;
-}
-.leftChild {
-  width: 25%;
-  float: left;
-  margin-top: -40px;
-  margin-left: -15rem;
-  padding-right: 20px;
-  /* overflow: hidden; */
-  position: fixed;
 }
 
-.leftChildImg {
-  padding: 30px;
-  padding-right: 40px;
-  max-height: 95vh;
+.banner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #f2f2f2;
+  box-shadow: 0px 10px 10px 0px #1124;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 60vh;
 }
-
-.rightChild {
-  padding-left: 40%;
-  /* width: 40%; */
-  float: left;
-}
-
-@media only screen and (max-width: 729px) {
-  .leftChild {
-    display: none;
+@keyframes example {
+  from {
+    right: 0%;
   }
-  .rightChild {
-    padding-left: 2rem;
-    background-image: url("./vector-creator.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+  to {
+    right: 100%;
   }
 }
 
-@media only screen and (max-width: 690px) {
-  .leftChild {
-    margin-top: -40px;
-    margin-left: -15rem;
-    padding-right: 20px;
-    position: fixed;
+.movingImage {
+  position: absolute;
+  right: 0%;
+  filter: drop-shadow(5px 5px 5px #222);
+  animation: example 5.4s infinite;
+  animation-delay: 200ms;
+  animation-timing-function: cubic-bezier(0.4, 0.7, 0.7, 0.4);
+}
+
+.arrowContainer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #f2f2f2;
+  box-shadow: 0px 10px 10px 0px #1124;
+  height: 88px;
+  margin-bottom: 40px;
+}
+
+@keyframes jumpingBtn {
+  0% {
+    top: 16px;
   }
-  .rightChild {
+  50% {
+    top: -10px;
+  }
+  100% {
+    top: 16px;
   }
 }
+.arrowContainer img {
+  height: 90px;
+  position: absolute;
+  top: 16px;
+  filter: drop-shadow(5px 5px 5px #222);
+  animation: jumpingBtn 2s infinite;
+  animation-timing-function: cubic-bezier(0.4, 0.4, 0.4, 0.4);
+}
+/* .noticeSection {
+} */
