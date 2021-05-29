@@ -49,32 +49,6 @@ body {
   height: 80vh;
 }
 
-/*
-.page,
-.upload-form input {
-  width: 65%;
-  padding: 0.75rem;
-}
-
-.page,
-.login-register-form {
-  width: 65%;
-  padding-left: 10%;
-} */
-
-.next-prev-btn {
-  text-decoration: none;
-  display: inline-block;
-  padding: 3px;
-  font-size: 10px;
-  font-weight: bolder;
-  width: 30px;
-  text-align: center;
-  background-color: #a0a0a0;
-  color: white;
-  border-radius: 50%;
-}
-
 /**********HEADER*********/
 #header {
   height: 70px;

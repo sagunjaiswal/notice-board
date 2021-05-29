@@ -1,8 +1,27 @@
 .pdfBox {
   text-align: center;
-  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
-    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+  box-shadow: rgb(136 165 191 / 48%) 6px 2px 16px 0px,
+    rgb(255 255 255 / 80%) -6px -2px 16px 0px;
   margin: 2rem;
-  border-radius: 20px;
+  padding: 12px 12px 36px 12px;
+  border-radius: 8px;
   background-color: aliceblue;
+}
+
+.pageControllerBtn {
+  text-decoration: none;
+  display: inline-block;
+  padding: 3px;
+  font-size: 10px;
+  font-weight: bolder;
+  width: 30px;
+  text-align: center;
+  background-color: #a0a0a0;
+  color: white;
+  border-radius: 50%;
+  box-shadow: 5px 3px 14px -1px #111;
+}
+
+.pageControllerBtn:hover {
+  box-shadow: 5px 3px 14px -1px #111 inset;
 }
