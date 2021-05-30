@@ -69,5 +69,12 @@ html {
   animation: jumpingBtn 2s infinite;
   animation-timing-function: cubic-bezier(0.4, 0.4, 0.4, 0.4);
 }
-/* .noticeSection {
-} */
+
+.noticeContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 96vw;
+}

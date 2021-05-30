@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styles from "./style.module.css";
 import { fetchNotice, noticeDisplayHandler } from "../../../utils/helperMethod";
+import UserContext from "../../../global/UserContext";
 let pause;
 let imgId = 0;
 const DisplayNotices = () => {
   const [uploadedNotices, setUploadedNotices] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [displayImage, setDisplayImage] = useState("assets/homescreen.svg");
+
+  const { userData } = useContext(UserContext);
+
   useEffect(() => {
     randomFunction();
     fetchNotice(setUploadedNotices, setIsLoading);
@@ -29,7 +33,7 @@ const DisplayNotices = () => {
   const randomFunction = () => {
     pause = setInterval(() => {
       imageRotateHandler();
-    }, 5400);
+    }, 5300);
   };
 
   const scrollHandler = (e) => {
@@ -42,27 +46,31 @@ const DisplayNotices = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.banner}>
-        <img
-          className={styles.movingImage}
-          src={displayImage}
-          alt="cover-picture"
-        />
-      </div>
-      <div className={styles.arrowContainer}>
-        <img
-          src="assets/expand.svg"
-          alt="show Notice"
-          onClick={(e) => {
-            scrollHandler(e);
-          }}
-        />
-      </div>
+      {!userData.user ? (
+        <>
+          <div className={styles.banner}>
+            <img
+              className={styles.movingImage}
+              src={displayImage}
+              alt="cover-picture"
+            />
+          </div>
+          <div className={styles.arrowContainer}>
+            <img
+              src="assets/expand.svg"
+              alt="show Notice"
+              onClick={(e) => {
+                scrollHandler(e);
+              }}
+            />
+          </div>
+        </>
+      ) : null}
       <div>
         {isLoading ? (
           <h1>Loading...</h1>
         ) : uploadedNotices.length ? (
-          <div>
+          <div className={styles.noticeContainer}>
             {uploadedNotices.map((notice) => noticeDisplayHandler(notice))}
           </div>
         ) : (

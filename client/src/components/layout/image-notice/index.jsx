@@ -1,10 +1,11 @@
 import React from "react";
+import styles from "./styles.module.css";
 
 const ImageNotice = ({ notice }) => {
   const { _id, noticeFile, title, noticeDate } = notice;
 
   return (
-    <div key={_id} style={{ padding: "80px", paddingTop: "100px" }}>
+    <div key={_id} className={styles.container}>
       <a
         href={`http://localhost:5000/${noticeFile}`}
         rel="noopener noreferrer"
@@ -13,12 +14,14 @@ const ImageNotice = ({ notice }) => {
         <img
           src={`http://localhost:5000/${noticeFile}`}
           alt="imageNotice"
-          height="260px"
-          width="200px"
+          height="500px"
+          width="400px"
         />
       </a>
-      <p style={{ color: "#6aa051" }}>{title}</p>
-      <p>{noticeDate}</p>
+      <div className={styles.noticeDetails}>
+        <p className={styles.noticeTitle}>{title}</p>
+        <p className={styles.notcieDate}>{noticeDate}</p>
+      </div>
     </div>
   );
 };
