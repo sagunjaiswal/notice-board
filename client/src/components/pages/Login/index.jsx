@@ -67,7 +67,7 @@ const Login = () => {
         </h3>
       ) : null}
       <div className={styles.imageContainer}>
-        <img src="/notice-board-illustrator.png"></img>
+        <img src="/notice-board-illustrator.png" alt="logo"></img>
       </div>
       <div className={styles.loginForm}>
         <h2>Login</h2>

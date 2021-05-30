@@ -35,7 +35,6 @@ html {
   right: 0%;
   filter: drop-shadow(5px 5px 5px #222);
   animation: example 5.4s infinite;
-  animation-delay: 200ms;
   animation-timing-function: cubic-bezier(0.4, 0.7, 0.7, 0.4);
 }
 
