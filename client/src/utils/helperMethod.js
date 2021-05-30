@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ImageNotice from "../components/pages/ImageNotice";
+import ImageNotice from "../components/layout/image-notice/index";
 import PdfNoticeRenderer from "../components/pages/PdfNoticeRenderer";
 toast.configure();
 
