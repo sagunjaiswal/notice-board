@@ -12,7 +12,7 @@ export default function Home() {
       {userData.user ? (
         <UploadPage />
       ) : (
-        <div className="notices-container">
+        <div className={styles.noticeContainer}>
           <DisplayNotices />
         </div>
       )}

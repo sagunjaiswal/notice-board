@@ -31,23 +31,35 @@ const PdfNotice = ({ notice }) => {
           file={`http://localhost:5000/${noticeFile}`}
           onLoadSuccess={onDocumentLoadSuccess}
         >
-          <Page pageNumber={pageNumber} height="1200" width="200" />
+          <Page pageNumber={pageNumber} />
         </Document>
       </a>
-      <p style={{ color: "#4B0082" }}>{title}</p>
-      <p style={{ color: "#808080	" }}>{noticeDate}</p>
-      <p style={{ fontSize: "10px" }}>
-        Page {pageNumber} / {numPages}
-      </p>
 
-      <nav>
-        <button className="next-prev-btn" onClick={goToPrevPage}>
-          &lt;
-        </button>
-        <button className="next-prev-btn" onClick={goToNextPage}>
-          &gt;
-        </button>
-      </nav>
+      <div className={styles.noticeDetails}>
+        <p className={styles.noticeTitle}>{title}</p>
+        <p className={styles.noticeDate}>{noticeDate}</p>
+        <p style={{ fontSize: "10px" }}>
+          Page {pageNumber} / {numPages}
+        </p>
+
+        {numPages !== 1 ? (
+          <div className={styles.btnContainer}>
+            <button
+              className={`${styles.pageControllerBtn} ${styles.prevBtn}`}
+              onClick={goToPrevPage}
+            >
+              <img src="assets/previous.svg" alt="previous" />
+            </button>
+            <button
+              className={`${styles.pageControllerBtn} ${styles.nextBtn}`}
+              onClick={goToNextPage}
+              disabled={pageNumber === numPages ? true : false}
+            >
+              <img src="assets/next.svg" alt="next" />
+            </button>
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 };
