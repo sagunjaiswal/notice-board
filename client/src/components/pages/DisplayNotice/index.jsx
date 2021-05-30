@@ -52,7 +52,7 @@ const DisplayNotices = () => {
             <img
               className={styles.movingImage}
               src={displayImage}
-              alt="cover-picture"
+              alt="carousal"
             />
           </div>
           <div className={styles.arrowContainer}>
@@ -71,7 +71,9 @@ const DisplayNotices = () => {
           <h1>Loading...</h1>
         ) : uploadedNotices.length ? (
           <div className={styles.noticeContainer}>
-            {uploadedNotices.map((notice) => noticeDisplayHandler(notice))}
+            {uploadedNotices.map((notice, id) =>
+              noticeDisplayHandler(notice, id)
+            )}
           </div>
         ) : (
           <span>

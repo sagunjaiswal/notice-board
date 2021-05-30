@@ -74,7 +74,7 @@ export default function Register() {
   return (
     <div className={styles.registrationFormContainer}>
       <div className={styles.imageContainer}>
-        <img src="/notice-board-illustrator.png"></img>
+        <img src="/notice-board-illustrator.png" alt="logo"></img>
       </div>
       <div className={styles.regForm}>
         <h2>Register</h2>

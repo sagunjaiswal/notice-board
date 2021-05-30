@@ -9,8 +9,8 @@ const UploadPage = () => {
   const [title, setTitle] = useState("");
   const [noticeDate, setNoticeDate] = useState(moment().format("YYYY-MM-DD"));
   const [noticeFile, setNoticeFile] = useState(null);
-  const [uploadedNotices, setUploadedNotices] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [uploadedNotices, setUploadedNotices] = useState([]);
 
   const _onChangeHandler = (e) => {
     if (e.target.name === "title") {

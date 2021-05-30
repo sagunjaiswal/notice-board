@@ -2,10 +2,10 @@ import React from "react";
 import styles from "./styles.module.css";
 
 const ImageNotice = ({ notice }) => {
-  const { _id, noticeFile, title, noticeDate } = notice;
+  const { noticeFile, title, noticeDate } = notice;
 
   return (
-    <div key={_id} className={styles.container}>
+    <div className={styles.container}>
       <a
         href={`http://localhost:5000/${noticeFile}`}
         rel="noopener noreferrer"

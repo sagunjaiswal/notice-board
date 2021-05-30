@@ -3,7 +3,7 @@ import { Document, Page, pdfjs } from "react-pdf";
 import styles from "./ImageNotice.module.css";
 
 const PdfNotice = ({ notice }) => {
-  const { _id, noticeFile, title, noticeDate } = notice;
+  const { noticeFile, title, noticeDate } = notice;
   pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
@@ -22,7 +22,6 @@ const PdfNotice = ({ notice }) => {
   return (
     <div className={styles.pdfBox}>
       <a
-        key={_id}
         href={`http://localhost:5000/${noticeFile}`}
         rel="noopener noreferrer"
         target="_blank"

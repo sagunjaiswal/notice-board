@@ -87,12 +87,12 @@ export const fetchNotice = (setUploadedNotices, setIsLoading) => {
     });
 };
 
-export const noticeDisplayHandler = (notice) => {
+export const noticeDisplayHandler = (notice, id) => {
   const { noticeFileType } = notice;
 
   if (noticeFileType === "application/pdf") {
-    return <PdfNoticeRenderer notice={notice} />;
+    return <PdfNoticeRenderer key={id} notice={notice} />;
   } else {
-    return <ImageNotice notice={notice} />;
+    return <ImageNotice key={id} notice={notice} />;
   }
 };
