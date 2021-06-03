@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
-import styles from "./ImageNotice.module.css";
+import styles from "./styles.module.css";
 
 const PdfNotice = ({ notice }) => {
   const { noticeFile, title, noticeDate } = notice;
@@ -38,10 +38,11 @@ const PdfNotice = ({ notice }) => {
         <p className={styles.noticeTitle}>{title}</p>
         <p className={styles.noticeDate}>{noticeDate}</p>
         <p style={{ fontSize: "10px" }}>
-          Page {pageNumber} / {numPages}
+          {/* Page {pageNumber} / {numPages} */}
+          {pageNumber > 1 ? `${pageNumber} pages` : `${pageNumber} page`}
         </p>
 
-        {numPages !== 1 ? (
+        {/* {numPages !== 1 ? (
           <div className={styles.btnContainer}>
             <button
               className={`${styles.pageControllerBtn} ${styles.prevBtn}`}
@@ -57,7 +58,7 @@ const PdfNotice = ({ notice }) => {
               <img src="assets/next.svg" alt="next" />
             </button>
           </div>
-        ) : null}
+        ) : null} */}
       </div>
     </div>
   );

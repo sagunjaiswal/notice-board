@@ -3,7 +3,7 @@ import React from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ImageNotice from "../components/layout/image-notice/index";
-import PdfNoticeRenderer from "../components/pages/PdfNoticeRenderer";
+import PdfNoticeRenderer from "../components/layout/pdf-notice/index";
 toast.configure();
 
 export const noticeUploadHandler = ({ title, noticeDate, noticeFile }) => {

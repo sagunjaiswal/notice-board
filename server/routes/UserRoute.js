@@ -23,8 +23,7 @@ router.post("/register", async (req, res) => {
     //you can omit this part if this field is not what you want to include in your project
     if (uniqueOrganizationCode !== "uniqueOrganizationCode")
       return res.status(400).json({
-        msg:
-          "Invalid organization code! Please enter a valid organization code.",
+        msg: "Invalid organization code! Please enter a valid organization code.",
       });
 
     //vaidation for no account with the same user
