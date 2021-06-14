@@ -7,34 +7,12 @@ let imgId = 0;
 const DisplayNotices = () => {
   const [uploadedNotices, setUploadedNotices] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [displayImage, setDisplayImage] = useState("assets/homescreen.svg");
 
   const { userData } = useContext(UserContext);
 
   useEffect(() => {
-    randomFunction();
     fetchNotice(setUploadedNotices, setIsLoading);
   }, []);
-
-  const imageRotateHandler = () => {
-    let images = ["homescreen.svg", "homescreen1.svg", "homescreen2.svg"];
-
-    let index;
-    if (imgId === 2) {
-      index = 0;
-    } else {
-      index = imgId + 1;
-    }
-    imgId = index;
-    let element = images[index];
-    setDisplayImage(`assets/${element}`);
-  };
-
-  const randomFunction = () => {
-    pause = setInterval(() => {
-      imageRotateHandler();
-    }, 5300);
-  };
 
   const scrollHandler = (e) => {
     let y = window.scrollY;
@@ -49,11 +27,9 @@ const DisplayNotices = () => {
       {!userData.user ? (
         <>
           <div className={styles.banner}>
-            <img
-              className={styles.movingImage}
-              src={displayImage}
-              alt="carousal"
-            />
+            <div className={styles.wrapper}>
+              <div className={styles.slidingbackground}></div>
+            </div>
           </div>
           <div className={styles.arrowContainer}>
             <img

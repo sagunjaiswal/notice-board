@@ -30,12 +30,46 @@ html {
     right: 100%;
   }
 }
+.wrapper {
+  overflow: hidden;
+}
+.slidingbackground {
+  background: url("/assets/slider.svg") repeat-x;
+  height: 560px;
+  width: 6000px;
+  animation: slide 4s linear infinite;
+}
 
-.movingImage {
+@keyframes slide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-1692px, 0, 0);
+  }
+}
+
+.movingImage1 {
   position: absolute;
   right: 0%;
   filter: drop-shadow(5px 5px 5px #222);
-  animation: example 5.4s infinite;
+  animation: example 5s infinite;
+  /* animation-timing-function: cubic-bezier(0.4, 0.7, 0.7, 0.4); */
+}
+.movingImage2 {
+  position: absolute;
+  right: 0%;
+  filter: drop-shadow(5px 5px 5px #222);
+  animation: example 5s infinite;
+  animation-duration: 5s;
+  animation-timing-function: cubic-bezier(0.4, 0.7, 0.7, 0.4);
+}
+.movingImage3 {
+  position: absolute;
+  right: 0%;
+  filter: drop-shadow(5px 5px 5px #222);
+  animation: example 5s infinite;
+  animation-delay: 15s;
   animation-timing-function: cubic-bezier(0.4, 0.7, 0.7, 0.4);
 }
 
