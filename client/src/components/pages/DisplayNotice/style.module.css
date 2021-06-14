@@ -6,8 +6,8 @@ html {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 98vw;
   align-items: center;
+  width: 100%;
 }
 
 .banner {
@@ -20,6 +20,7 @@ html {
   align-items: center;
   position: relative;
   height: 60vh;
+  overflow: hidden;
 }
 @keyframes example {
   from {

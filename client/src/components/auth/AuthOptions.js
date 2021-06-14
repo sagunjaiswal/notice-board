@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import UserContext from "../../global/UserContext";
+import styles from "../layout/Navbar/style.module.css";
 
 export default function AuthOptions() {
   const { userData, setUserData } = useContext(UserContext);
@@ -17,7 +18,7 @@ export default function AuthOptions() {
     localStorage.setItem("auth-token", "");
   };
   return (
-    <nav className="authOptions">
+    <nav className={styles.authOptions}>
       {userData.user ? (
         <button onClick={logout}>Log out</button>
       ) : (
