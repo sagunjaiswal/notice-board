@@ -1,0 +1,46 @@
+#header {
+  /* height: 70px; */
+
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  background-color: #171332;
+}
+
+#header a {
+  padding: 2rem 0;
+}
+
+#header .title {
+  margin: 0;
+  padding: 0 1rem;
+  color: #fff;
+  margin-left: 50px;
+  display: inline;
+  margin-left: 0;
+  font-family: "Rye", cursive;
+}
+
+#header .navLogo {
+  height: 40px;
+  width: 50px;
+  margin-left: 2rem;
+  margin-top: -2rem;
+  margin-right: 2rem;
+}
+
+#header .authOptions {
+  display: flex;
+  height: 8rem;
+}
+
+#header .authOptions button {
+  padding: 0 6rem;
+  background-color: #2a5d67;
+  color: #fff;
+  font-size: 2.1rem;
+}
+
+#header .authOptions button:hover {
+  background-color: #6aa051;
+}
