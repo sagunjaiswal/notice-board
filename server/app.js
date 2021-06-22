@@ -47,5 +47,10 @@ app.use((req, res, next) => {
 //set up routes
 app.use("/users", require("./routes/UserRoute"));
 app.use("/notice", require("./routes/NoticeRoute"));
-
+app.use("/", (req, res, next) => {
+  res.json({
+    msg: "here is the home route",
+  });
+  next();
+});
 module.exports = app;
