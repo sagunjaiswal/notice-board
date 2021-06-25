@@ -7,16 +7,7 @@ const PdfNotice = ({ notice }) => {
   const [pageNumber, setPageNumber] = useState(1);
   pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-  const pdfTextContentDimension = () => {
-    let spans = document.getElementsByClassName("react-pdf__Page__textContent");
-    Object.values(spans).forEach((spanElem) => {
-      spanElem.style["height"] = "100%";
-      spanElem.style["width"] = "100%";
-    });
-  };
-
   const onDocumentLoadSuccess = ({ numPages }) => {
-    pdfTextContentDimension();
     setPageNumber(numPages);
   };
 
@@ -31,7 +22,7 @@ const PdfNotice = ({ notice }) => {
           file={`http://localhost:5000/${noticeFile}`}
           onLoadSuccess={onDocumentLoadSuccess}
         >
-          <Page pageNumber={1} />
+          <Page pageNumber={1} width={200} />
         </Document>
       </a>
 
