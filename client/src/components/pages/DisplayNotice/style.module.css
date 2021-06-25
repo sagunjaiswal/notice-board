@@ -96,6 +96,7 @@ html {
   }
 }
 .arrowContainer img {
+  cursor: pointer;
   height: 90px;
   position: absolute;
   top: 16px;

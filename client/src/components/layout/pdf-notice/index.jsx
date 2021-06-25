@@ -4,20 +4,12 @@ import styles from "./styles.module.css";
 
 const PdfNotice = ({ notice }) => {
   const { noticeFile, title, noticeDate } = notice;
-  pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-  const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
+  pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-  const goToPrevPage = () => {
-    if (pageNumber > 1) setPageNumber(pageNumber - 1);
+  const onDocumentLoadSuccess = ({ numPages }) => {
+    setPageNumber(numPages);
   };
-  const goToNextPage = () => {
-    if (pageNumber < numPages) setPageNumber(pageNumber + 1);
-  };
-
-  function onDocumentLoadSuccess({ numPages }) {
-    setNumPages(numPages);
-  }
 
   return (
     <div className={styles.pdfBox}>
@@ -30,7 +22,7 @@ const PdfNotice = ({ notice }) => {
           file={`http://localhost:5000/${noticeFile}`}
           onLoadSuccess={onDocumentLoadSuccess}
         >
-          <Page pageNumber={pageNumber} />
+          <Page pageNumber={1} width={200} />
         </Document>
       </a>
 
@@ -38,27 +30,9 @@ const PdfNotice = ({ notice }) => {
         <p className={styles.noticeTitle}>{title}</p>
         <p className={styles.noticeDate}>{noticeDate}</p>
         <p style={{ fontSize: "10px" }}>
-          {/* Page {pageNumber} / {numPages} */}
-          {pageNumber > 1 ? `${pageNumber} pages` : `${pageNumber} page`}
+          {pageNumber}
+          {pageNumber > 1 ? " pages" : " page"}
         </p>
-
-        {/* {numPages !== 1 ? (
-          <div className={styles.btnContainer}>
-            <button
-              className={`${styles.pageControllerBtn} ${styles.prevBtn}`}
-              onClick={goToPrevPage}
-            >
-              <img src="assets/previous.svg" alt="previous" />
-            </button>
-            <button
-              className={`${styles.pageControllerBtn} ${styles.nextBtn}`}
-              onClick={goToNextPage}
-              disabled={pageNumber === numPages ? true : false}
-            >
-              <img src="assets/next.svg" alt="next" />
-            </button>
-          </div>
-        ) : null} */}
       </div>
     </div>
   );

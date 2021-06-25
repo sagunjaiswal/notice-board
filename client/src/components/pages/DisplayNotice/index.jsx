@@ -2,8 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import styles from "./style.module.css";
 import { fetchNotice, noticeDisplayHandler } from "../../../utils/helperMethod";
 import UserContext from "../../../global/UserContext";
-let pause;
-let imgId = 0;
+
 const DisplayNotices = () => {
   const [uploadedNotices, setUploadedNotices] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
