@@ -9,7 +9,7 @@ export default function Navbar() {
     <header id={styles.header}>
       <Link to="/">
         <img
-          src="/notice-board-illustrator.png"
+          src="/NavLogo.svg"
           className={styles.navLogo}
           alt="app-logo"
         />

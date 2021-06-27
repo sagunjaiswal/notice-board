@@ -9,24 +9,25 @@
   padding: 12px 12px 8px 12px;
   border-radius: 8px;
   background-color: aliceblue;
-  width: 20vw;
-  height: 28rem;
+  width: calc(100vw / 3);
+  min-height: 30rem;
   max-width: 30rem;
   box-sizing: content-box;
 }
+
+.pdfBox a {
+  width: 100%;
+  height: calc(100% * 2 / 3);
+}
+
 .pdfBox canvas {
   width: 100% !important;
   height: 18.5rem !important;
 }
 
-.fixer {
-  position: unset !important;
-}
-
 .noticeDetails {
   background-color: #008080;
   width: 100%;
-  /* overflow: hidden; */
   height: 9rem;
   display: flex;
   align-items: center;
@@ -42,13 +43,26 @@
 .noticeTitle {
   width: 100%;
   word-wrap: break-word;
+  overflow: hidden;
   margin: 4px;
   font-size: 16px;
   font-family: sans-serif;
-  /* overflow: scroll;
-  overflow-x: hidden; */
 }
 
 .noticeDate {
   margin: 4px 0;
+}
+
+@media only screen and (max-width: 900px) {
+  .pdfBox {
+    box-sizing: border-box;
+    width: 50%;
+    margin: 10px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .pdfBox {
+    width: 100%;
+  }
 }

@@ -9,8 +9,8 @@
   padding: 12px 12px 8px 12px;
   border-radius: 8px;
   background-color: aliceblue;
-  width: 20vw;
-  height: 28rem;
+  width: calc(100vw / 3);
+  min-height: 30rem;
   max-width: 30rem;
   box-sizing: content-box;
 }
@@ -40,9 +40,24 @@
   width: 100%;
   word-wrap: break-word;
   font-family: sans-serif;
+  overflow: hidden;
   margin: 4px;
 }
 
 .noticeDate {
   margin: 4px 0;
+}
+
+@media only screen and (max-width: 900px) {
+  .container {
+    box-sizing: border-box;
+    width: 50%;
+    margin: 10px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .container {
+    width: 100%;
+  }
 }
