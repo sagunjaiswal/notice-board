@@ -67,7 +67,7 @@ const Login = () => {
         </h3>
       ) : null}
       <div className={styles.imageContainer}>
-        <img src="/notice-board-illustrator.png" alt="logo"></img>
+        <img src="/NavLogo.svg" alt="logo"></img>
       </div>
       <div className={styles.loginForm}>
         <h2>Login</h2>
@@ -106,7 +106,12 @@ const Login = () => {
               </span>
             ) : null}
           </div>
-          <input disabled={isLoading} type="submit" value="Login" />
+          <input
+            disabled={isLoading}
+            type="submit"
+            value="Login"
+            id={styles.submitBtn}
+          />
         </form>
       </div>
     </div>

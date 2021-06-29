@@ -2,29 +2,43 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: flex-start;
+  height: calc(100vh - 80px);
+  padding: 8rem 16px 0px 16px;
 }
 
 .loginForm {
   flex: 7;
-  width: 50%;
-  padding-top: 80px;
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .loginForm h2 {
   border-bottom: 2px solid #000;
-  width: 75%;
+  width: 90%;
+  margin-top: 0px !important;
+  margin-bottom: 10% !important;
 }
 
 .loginForm form {
-  width: 75%;
+  width: 90%;
 }
 
 .imageContainer {
   flex: 9;
+  display: flex;
+  align-items: center;
+  margin-left: -54px;
+  max-height: 450px;
 }
 
 .imageContainer img {
-  width: 80%;
+  width: 100%;
+  max-height: 450px;
 }
 
 .passwordInputContainer {
@@ -60,13 +74,53 @@
   .login-register-form {
     margin-left: -44rem;
   }
-}
-@media only screen and (max-width: 500px) {
-  .image-container img {
-    width: 85%;
-  }
-  .login-register-form {
-    margin: 3rem;
-    margin-top: -50px;
-  }
 } */
+@media only screen and (max-width: 550px) {
+  .loginFormContainer {
+    padding: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  .imageContainer {
+    margin-left: 0;
+    display: block;
+    max-height: 26rem;
+  }
+  .imageContainer img {
+    height: 100%;
+    width: 100%;
+  }
+
+  .loginForm {
+    flex-grow: 2;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .loginForm h2 {
+    display: none;
+  }
+  .loginForm form {
+    width: 100%;
+    padding: 0 24px;
+  }
+
+  #submitBtn {
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 950px) {
+  .imageContainer {
+    flex: none;
+    width: 70%;
+  }
+  .imageContainer img {
+    max-height: 650px;
+  }
+
+  .loginForm {
+    width: 50%;
+  }
+}
