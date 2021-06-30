@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Axios from "axios";
 import Home from "./components/pages/HomePage/index";
 import Login from "./components/pages/Login/index";
-import Register from "./components/pages/Regsiter/index";
+import Register from "./components/pages/Register/index";
 import Navbar from "./components/layout/Navbar/Navbar";
 import UserContext from "./global/UserContext";
 import UploadPage from "./components/pages/UploadPage/index";
