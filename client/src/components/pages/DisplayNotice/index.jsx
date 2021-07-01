@@ -51,7 +51,7 @@ const DisplayNotices = () => {
             )}
           </div>
         ) : (
-          <span>
+          <span id={styles.noNoticeContainer}>
             <img src="/assets/NoContent.svg" alt="no notice" />
             <h1>No notice</h1>
           </span>

@@ -81,12 +81,28 @@ html {
   animation-timing-function: cubic-bezier(0.4, 0.4, 0.4, 0.4);
 }
 
-.noticeContainer {
+#noticeContainer {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   width: 96vw;
+}
+
+#noNoticeContainer {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#noNoticeContainer img {
+  height: 50vh;
+  width: 90%;
+  max-width: 400px;
+}
+#noNoticeContainer h1 {
+  margin-top: 1rem;
 }
 
 @media only screen and (max-width: 500px) {
