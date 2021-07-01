@@ -10,11 +10,12 @@
   align-items: center;
 }
 
-.uploadForm > * {
+/* .uploadForm > * {
   width: 50%;
-}
+} */
 
 .inputSection {
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -32,6 +33,17 @@
   border-radius: 8px;
   margin-top: 10px;
   color: #fff;
+}
+
+.uploadController {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.uploadController * {
+  width: 100%;
 }
 
 .selectFileBtn {
@@ -53,4 +65,48 @@
 
 .uploadButton:disabled {
   background-color: #35bb54a2;
+}
+
+@media only screen and (min-width: 345px) and (max-width: 550px) {
+  .uploadForm {
+    width: 80%;
+  }
+
+  .uploadForm .inputSection {
+    width: 100%;
+  }
+
+  .uploadController {
+    padding-bottom: 16px;
+    width: 100%;
+    flex-direction: row;
+  }
+
+  #noticeFileName {
+  }
+
+  .uploadButton {
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (max-width: 347px) {
+  .uploadForm {
+    padding: 0 2px;
+    width: 100%;
+  }
+
+  .uploadForm .inputSection {
+    width: 100%;
+  }
+
+  .uploadController {
+    padding-bottom: 16px;
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .uploadButton {
+    margin-bottom: 0;
+  }
 }

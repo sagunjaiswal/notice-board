@@ -9,8 +9,6 @@ const UploadPage = () => {
   const [title, setTitle] = useState("");
   const [noticeDate, setNoticeDate] = useState(moment().format("YYYY-MM-DD"));
   const [noticeFile, setNoticeFile] = useState(null);
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [uploadedNotices, setUploadedNotices] = useState([]);
 
   const _onChangeHandler = (e) => {
     if (e.target.name === "title") {
@@ -53,37 +51,41 @@ const UploadPage = () => {
             onChange={(e) => _onChangeHandler(e)}
           />
         </div>
-        <button
-          title="Select .pdf/.jpeg/.jpg/.png file"
-          name="fileSelector"
-          className={styles.selectFileBtn}
-          onClick={() => myRef.current.click()}
-        >
-          Select Notice File
-        </button>
-        <strong>{noticeFile ? noticeFile.name : null}</strong>
-        <input
-          ref={myRef}
-          type="file"
-          accept=".pdf,.jpeg,.jpg,.png"
-          id="upload"
-          style={{ display: "none" }}
-          onChange={(e) => _onChangeHandler(e)}
-        />
-        <br />
-        <button
-          className={styles.uploadButton}
-          title={
-            noticeFile !== null
-              ? "Click to upload the file"
-              : "Select a notice file"
-          }
-          name="fileSelector"
-          disabled={noticeFile === null ? true : false}
-          onClick={() => noticeUploadHandler(formDataBundler())}
-        >
-          Upload Notice
-        </button>
+        <div className={styles.uploadController}>
+          <button
+            title="Select .pdf/.jpeg/.jpg/.png file"
+            name="fileSelector"
+            className={styles.selectFileBtn}
+            onClick={() => myRef.current.click()}
+          >
+            Select Notice File
+          </button>
+          <input
+            ref={myRef}
+            type="file"
+            accept=".pdf,.jpeg,.jpg,.png"
+            id="upload"
+            style={{ display: "none" }}
+            onChange={(e) => _onChangeHandler(e)}
+          />
+          <br />
+          <button
+            className={styles.uploadButton}
+            title={
+              noticeFile !== null
+                ? "Click to upload the file"
+                : "Select a notice file"
+            }
+            name="fileSelector"
+            disabled={noticeFile === null ? true : false}
+            onClick={() => noticeUploadHandler(formDataBundler())}
+          >
+            Upload Notice
+          </button>
+        </div>
+        <strong id={styles.selectedFileName}>
+          {noticeFile ? noticeFile.name : null}
+        </strong>
       </div>
       <NoticeSection />
     </div>
